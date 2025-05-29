@@ -1,7 +1,5 @@
+import { AppBar, Button, Toolbar } from '@mui/material'
 import Link from 'next/link'
-import { AppBar, Button, Toolbar, Typography } from '@mui/material'
-
-import logoNavBar from '../../../assets/icon-navbar.svg'
 
 const navItems = [
   { label: 'HOME', href: '/home' },
@@ -16,9 +14,6 @@ const navItems = [
 const NavBar = () => (
   <AppBar elevation={0} position='relative' color='transparent'>
     <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
-      <Typography component='div' sx={{ fontWeight: 'bold', fontSize: '1.5rem', marginTop: '10px' }}>
-        <img src={logoNavBar.src} alt="Logo" />
-      </Typography>
       <div>
         {navItems.map(({ label, href }) => (
           <Button

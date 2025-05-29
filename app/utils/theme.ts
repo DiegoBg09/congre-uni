@@ -1,135 +1,123 @@
 'use client'
 import type {} from '@mui/material/themeCssVarsAugmentation'
-import { Montserrat, Merriweather, Roboto } from 'next/font/google'
 import { createTheme } from '@mui/material'
+import { Montserrat, Merriweather, Roboto } from 'next/font/google'
 
 const montserrat = Montserrat({
-  weight: ['400', '700'],
-  subsets: ['latin'],
+  weight : [ '400', '700' ],
+  subsets: [ 'latin' ],
   display: 'swap',
 })
 
 const merriweather = Merriweather({
-  weight: ['400', '700'],
-  subsets: ['latin'],
+  weight : [ '400', '700' ],
+  subsets: [ 'latin' ],
   display: 'swap',
 })
 
 const roboto = Roboto({
-  weight: ['400', '700'],
-  subsets: ['latin'],
+  weight : [ '400', '700' ],
+  subsets: [ 'latin' ],
   display: 'swap',
 })
 
 const theme = createTheme({
   palette: {
-    mode: 'light', // solo modo claro
+    mode   : 'light',
     primary: {
-      main: '#0F2B5B' // Azul oscuro principal
+      main: '#0F2B5B'
     },
     secondary: {
-      main: '#4AC4F4' // Celeste gota
+      main: '#4AC4F4'
     },
     success: {
-      main: '#B3D23F' // Verde lima hojas
+      main: '#B3D23F'
     },
     warning: {
-      main: '#F7981C' // Naranja
+      main: '#F7981C'
     },
     info: {
-      main: '#3C87D3' // Azul medio
-    },
-    background: {
-      default: '#ffffff',
-      paper: '#ffffff'
+      main: '#3C87D3'
     },
     text: {
-      primary: '#0F2B5B',
+      primary  : '#0F2B5B',
       secondary: '#4AC4F4'
     }
   },
   typography: {
     fontFamily: merriweather.style.fontFamily,
-    h1: {
+    h1        : {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 700,
     },
     h2: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 700,
-      fontSize: '4rem',
-      '@media (max-width: 900px)': {
-        fontSize: '3rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '2.5rem'
-      }
     },
     h3: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 700,
-      fontSize: '2.5rem',
-      '@media (max-width: 600px)': {
-        fontSize: '2rem'
-      }
     },
     h4: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 700,
-      fontSize: '2rem',
-      '@media (max-width: 600px)': {
-        fontSize: '1.5rem'
-      }
     },
     h5: {
       fontFamily: montserrat.style.fontFamily,
-      fontWeight: 700,
-      fontSize: '1.5rem',
-      '@media (max-width: 600px)': {
-        fontSize: '1rem'
-      }
     },
     body1: {
       fontFamily: merriweather.style.fontFamily,
-      fontSize: '1.5rem',
-      fontWeight: 400,
-      '@media (max-width: 900px)': {
-        fontSize: '1.25rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '1rem'
-      }
     },
     body2: {
       fontFamily: merriweather.style.fontFamily,
-      fontSize: '0.875rem',
-      '@media (max-width: 600px)': {
-        fontSize: '0.75rem'
-      }
     },
     subtitle1: {
       fontFamily: roboto.style.fontFamily,
-      fontSize: '1.125rem',
-      '@media (max-width: 900px)': {
-        fontSize: '0.875rem'
-      }
     },
     subtitle2: {
       fontFamily: roboto.style.fontFamily,
-      fontSize: '1rem',
-      fontWeight: 300,
-      '@media (max-width: 900px)': {
-        fontSize: '0.825rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '0.75rem'
-      }
     }
   },
   shape: {
     borderRadius: 16
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*': {
+          boxSizing: 'border-box',
+        },
+        html: {
+          height    : '100%',
+          '&::after': {
+            content      : 'url("/background.svg")',
+            position     : 'absolute',
+            left         : '-9999px',
+            top          : '-9999px',
+            width        : '1px',
+            height       : '1px',
+            opacity      : 0,
+            pointerEvents: 'none',
+            zIndex       : -9999,
+          }
+        },
+        body: {
+          height                     : '100%',
+          margin                     : 0,
+          padding                    : 0,
+          backgroundImage            : 'url("/background.svg")',
+          backgroundSize             : 'cover',
+          backgroundPosition         : 'center center',
+          backgroundRepeat           : 'no-repeat',
+          backgroundAttachment       : 'fixed',
+          minHeight                  : '100vh',
+          '@media (max-width: 768px)': {
+            backgroundAttachment: 'scroll',
+          },
+        },
+        '#__next': {
+          minHeight: '100vh',
+          position : 'relative',
+          zIndex   : 1,
+        }
+      }
+    },
     MuiButton: {
       defaultProps: {
         disableElevation: true
@@ -137,7 +125,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
-          borderRadius: 12
+          borderRadius : 12
         }
       }
     },

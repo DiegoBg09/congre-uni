@@ -1,4 +1,4 @@
-import { Container, styled } from '@mui/material'
+import { styled } from '@mui/material'
 
 const PREFIX = 'Header'
 
@@ -9,19 +9,17 @@ export const classes = {
 export default styled('div', {
   name: PREFIX
 })(({ theme: { breakpoints, spacing } }) => ({
-  height: '100vh',
-  display: 'flex',
-  flexDirection: 'column',
-  position: 'relative',
-  overflow: 'hidden',
-
+  height                    : '100vh',
+  display                   : 'flex',
+  flexDirection             : 'column',
+  position                  : 'relative',
+  overflow                  : 'hidden',
   [`& .${classes.homeInfo}`]: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    flex: 1,
-    zIndex: 1,
-    position: 'relative',
-    padding: spacing(5),
+    display                 : 'grid',
+    flex                    : 1,
+    zIndex                  : 1,
+    position                : 'relative',
+    padding                 : spacing(5),
     [breakpoints.down('sm')]: {
       gridTemplateColumns: 'repeat(1, 1fr)',
     },

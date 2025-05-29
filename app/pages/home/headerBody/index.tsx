@@ -1,18 +1,25 @@
 'use client'
-import { Button, Typography } from '@mui/material'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import logoDesktop from '../../../assets/logo-body.svg'
+import { Button, Typography } from '@mui/material'
+import Image from 'next/image'
+
+import logoCleia from '../../../assets/cleia-body.svg'
+import logoConeia from '../../../assets/logo-coneia.svg'
+
 
 import Root, { classes } from './styles'
 
 const HeaderBody = () => (
   <Root>
-    <img src={logoDesktop.src} alt="logo" />
-    <Typography className={classes.dateText}>DEL XX DE XXXXX AL XX DE XXXXX</Typography>
+    <div className={classes.logoContainer}>
+      <Image src={logoCleia} alt='logo cleia'/>
+      <Image src={logoConeia} alt='logo coneia' />
+    </div>
+    <Typography variant='h4' fontWeight='bold' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
     <Button
       className={classes.button}
-      variant="contained"
-      color="primary"
+      variant='contained'
+      color='primary'
       startIcon={<WhatsAppIcon />}
     >
       ¿Cómo adquiero mi entrada?

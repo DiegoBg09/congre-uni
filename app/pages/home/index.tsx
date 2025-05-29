@@ -1,15 +1,17 @@
-import Header from "../../components/header";
-import HeaderBody from "./headerBody";
-import AboutUs from "../../components/aboutUs";
-import Contact from "../../components/contact";
-import Speakers from "../../components/speakers";
+import AboutUs from '../../components/aboutUs'
+import Contact from '../../components/contact'
+import Header from '../../components/header'
+import Schedule from '../../components/schedule'
+
+import HeaderBody from './headerBody'
 
 const Home = () => (
   <>
     <Header body={<HeaderBody />} />
-    <Speakers />
+    <AboutUs />
+    <Schedule />
     <Contact />
   </>
-);
+)
 
-export default Home;
+export default Home

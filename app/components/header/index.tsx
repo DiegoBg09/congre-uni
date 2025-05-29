@@ -1,11 +1,12 @@
 'use client'
 import { ReactElement } from 'react'
+
 import HeaderVideo from './headerVideo'
 import NavBar from './navBar'
 import Root, { classes } from './styles'
 
 interface HeaderProps {
-  body: ReactElement
+  body: ReactElement;
 }
 
 const Header = ({ body }: HeaderProps) => (

@@ -5,15 +5,14 @@ const HeaderVideo = () => (
   <Box
     sx={{
       position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: -1,
-      backgroundColor: '#eaf5ff',
+      top     : 0,
+      left    : 0,
+      width   : '100%',
+      height  : '100%',
+      zIndex  : -1,
     }}
   >
-    {/* 
+    {/*
       <video
         autoPlay
         loop

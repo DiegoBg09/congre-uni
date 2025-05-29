@@ -1,9 +1,9 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import InitColorSchemeScript from '@mui/material/InitColorSchemeScript'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 
-import theme from './utils/theme'
 import WhatsAppFab from './components/chatWhats'
+import theme from './utils/theme'
 
 export default function RootLayout({ children }: {
   children: React.ReactNode;
