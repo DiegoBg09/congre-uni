@@ -1,34 +1,21 @@
 'use client'
-import { Box } from '@mui/material'
+
+import Root, { classes } from './styles'
 
 const HeaderVideo = () => (
-  <Box
-    sx={{
-      position: 'absolute',
-      top     : 0,
-      left    : 0,
-      width   : '100%',
-      height  : '100%',
-      zIndex  : -1,
-    }}
-  >
-    {/*
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-        }}
-      >
-        <source src="/PPG.mp4" type="video/mp4" />
-        Tu navegador no soporta el video HTML5.
-      </video>
-    */}
-  </Box>
+  <Root>
+    <video
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload='metadata'
+      className={classes.video}
+    >
+      <source src='/coneia-background.webm' type='video/webm' />
+      Tu navegador no soporta el video HTML5.
+    </video>
+  </Root>
 )
 
 export default HeaderVideo

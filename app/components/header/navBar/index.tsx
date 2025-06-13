@@ -2,13 +2,10 @@ import { AppBar, Button, Toolbar } from '@mui/material'
 import Link from 'next/link'
 
 const navItems = [
-  { label: 'HOME', href: '/home' },
+  { label: 'HOME', href: '/' },
   { label: 'CONGRESOS PASADOS', href: '/congresos-pasados' },
-  { label: 'CRONOGRAMA', href: '#cronograma' },
-  { label: 'PONENTES', href: '#ponentes' },
   { label: 'VISITAS TÉCNICAS', href: '/visitas-tecnicas' },
-  { label: 'SOBRE NOSOTROS', href: '#sobre-nosotros' },
-  { label: 'COMPRA TU ENTRADA', href: '#compra-tu-entrada' }
+  { label: 'COMPRA TU ENTRADA', href: '/#compra-tu-entrada' }
 ]
 
 const NavBar = () => (
