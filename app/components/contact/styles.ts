@@ -12,8 +12,8 @@ export const classes = {
 export default styled('div', {
   name: PREFIX
 })(({ theme: { spacing, breakpoints } }) => ({
-  height                              : '83.9vh',
-  paddingTop                          : spacing(6),
+  paddingTop                          : spacing(10),
+  paddingBottom                       : spacing(3),
   display                             : 'flex',
   flexDirection                       : 'column',
   justifyContent                      : 'center',

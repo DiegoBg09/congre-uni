@@ -2,7 +2,7 @@
 import { ReactElement } from 'react'
 
 import HeaderVideo from './headerVideo'
-import NavBar from './navBar'
+// import NavBar from './navBar'
 import Root, { classes } from './styles'
 
 interface HeaderProps {
@@ -12,7 +12,6 @@ interface HeaderProps {
 const Header = ({ body }: HeaderProps) => (
   <Root>
     <HeaderVideo />
-    <NavBar />
     <div className={classes.homeInfo}>
       {body}
     </div>

@@ -1,147 +1,204 @@
 'use client'
 
-import { Typography, Card, CardContent } from '@mui/material'
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
 
-import Root, { classes } from './styles'
+import Root from './styles'
 
 const Schedule = () => {
   const scheduleData = [
     {
-      day       : 'INICIO',
+      day       : 'LUNES',
       date      : '20 OCT',
       activities: [
-        'INAUGURACIÓN',
-        'INTEGRACIÓN',
+        'ACREDITACIÓN',
+        'INAUGURACIÓN E INTEGRACIÓN',
         'PONENCIA CENTRAL',
-        'VISITA TÉCNICA'
+        'RECESO',
+        'VISITA TÉCNICA IILA',
+        'CENA INSTITUCIONAL',
+        'GALA CULTURAL',
+        '', '',
       ]
     },
     {
-      day       : 'DÍA 2',
+      day       : 'MARTES',
       date      : '21 OCT',
       activities: [
-        'PONENCIAS',
-        'TARDE CIENTÍFICA',
-        'INAUGURACIÓN',
-        'ACTIVIDADES DEPORTIVAS'
+        '',
+        'PONENCIAS MAGISTRALES',
+        '', '', '', '', '',
+        'RECESO',
+        'ACTIVIDADES DEPORTIVAS',
+        '', '', '',
       ]
     },
     {
-      day       : 'DÍA 3',
+      day       : 'MIÉRCOLES',
       date      : '22 OCT',
       activities: [
-        'PONENCIAS',
-        'TARDE DEPORTIVA'
+        '',
+        'FERIA Y TALLERES TÉCNICOS',
+        '', '', '', '', '',
+        'RECESO',
+        'TARDE CIENTÍFICA',
+        'ASAMBLEA GENERAL',
+        '',
+        '',
       ]
     },
     {
-      day       : 'DÍA 4',
+      day       : 'JUEVES',
       date      : '23 OCT',
       activities: [
-        'VISITAS TÉCNICAS'
+        'VISITA TÉCNICA: SAN LORENZO',
+        '', '', '', '', '', '',
+        'RECESO',
+        'DIÁLOGO SECTOR HÍDRICO',
+        '', '', '',
       ]
     },
     {
-      day       : 'FINAL',
+      day       : 'VIERNES',
       date      : '24 OCT',
       activities: [
-        'FINALIZACIÓN DE',
-        'ACTIVIDADES DEPORTIVAS',
-        'ENTREGA DE',
-        'CERTIFICADOS',
-        'FIESTA DE',
-        'CONFRATERNIDAD'
+        'PRESENTACIÓN DE CASOS',
+        '', '', '', '', '', '',
+        'RECESO',
+        'FINAL JUEGOS DEPORTIVOS',
+        'CLAUSURA Y CERTIFICADOS',
+        'FOTO CONMEMORATIVA',
+        '',
+        '',
+        'FIESTA DE CONFRATERNIDAD',
       ]
     }
   ]
 
+
+  const timeSlots = [
+    '9:00 - 10:00',
+    '10:00 - 11:00',
+    '11:00 - 12:00',
+    '12:00 - 13:00',
+    '13:00 - 14:00',
+    '14:00 - 15:00',
+    '15:00 - 16:00',
+    '16:00 - 17:00',
+    '17:00 - 18:00',
+    '18:00 - 19:00',
+    '19:00 - 20:00',
+    '20:00 - 21:00',
+    '21:00 A MÁS'
+  ]
+
+  const getActivityForTimeSlot = (dayIndex: number, timeIndex: number) => {
+    const day = scheduleData[dayIndex]
+    if(!day || !day.activities[timeIndex]) return { activity: 'Libre', color: '#E91E63' }
+
+    const activity = day.activities[timeIndex]
+
+    if(activity.includes('INAUGURACIÓN')) return { activity, color: '#FF9800' }
+    if(activity.includes('PONENCIA') || activity.includes('PONENCIAS')) return { activity, color: '#00BCD4' }
+    if(activity.includes('VISITA')) return { activity, color: '#FFC107' }
+    if(activity.includes('INTEGRACIÓN')) return { activity, color: '#2196F3' }
+    if(activity.includes('DEPORTIVA') || activity.includes('DEPORTIVAS')) return { activity, color: '#8BC34A' }
+    if(activity.includes('CIENTÍFICA')) return { activity, color: '#9C27B0' }
+    if(activity.includes('FINALIZACIÓN') || activity.includes('CERTIFICADOS')) return { activity, color: '#FF5722' }
+    if(activity.includes('FIESTA') || activity.includes('CONFRATERNIDAD')) return { activity, color: '#E91E63' }
+
+    return { activity, color: '#607D8B' }
+  }
+
   return (
     <Root>
-      <Typography variant='h4' fontWeight='bold' sx={{ mb: 4 }}>
-        Cronograma
-      </Typography>
-      <div style={{ position: 'relative', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-        <div
-          style={{
-            position       : 'absolute',
-            top            : '50%',
-            left           : 0,
-            right          : 0,
-            height         : '4px',
-            backgroundColor: '#9e9e9e',
-            transform      : 'translateY(-50%)',
-            zIndex         : 0,
-          }}
-        />
-        <div
-          style={{
-            display       : 'flex',
-            flexDirection : 'row',
-            justifyContent: 'space-between',
-            alignItems    : 'flex-start',
-            gap           : '16px',
-            position      : 'relative',
-            zIndex        : 1
-          }}
-        >
-          {scheduleData.map((item, index) => (
-            <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: '220px' }}>
-              <div
-                style={{
-                  width          : '24px',
-                  height         : '24px',
-                  backgroundColor: '#424242',
-                  borderRadius   : '50%',
-                  border         : '4px solid white',
-                  boxShadow      : '0 2px 4px rgba(0,0,0,0.2)',
-                  marginBottom   : '16px',
-                  display        : 'block'
-                }}
-              />
-              <Card
+      <Box
+        sx={{
+          backgroundColor: '#8B4513',
+          color          : 'white',
+          padding        : '16px 32px',
+          borderRadius   : '25px',
+          display        : 'inline-block',
+          mb             : 4,
+          fontWeight     : 'bold',
+          fontSize       : '24px'
+        }}
+      >
+        CRONOGRAMA:
+      </Box>
+
+      <TableContainer component={Paper} sx={{ maxWidth: '100%', boxShadow: 3 }}>
+        <Table sx={{ minWidth: 650 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell
                 sx={{
-                  minHeight  : 300,
-                  width      : '100%',
-                  boxShadow  : 3,
-                  border     : '2px solid',
-                  borderColor: 'grey.300'
+                  backgroundColor: '#757575',
+                  color          : 'white',
+                  fontWeight     : 'bold',
+                  fontSize       : '14px',
+                  textAlign      : 'center'
                 }}
               >
-                <CardContent sx={{ p: 3 }}>
-                  <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-                    <Typography
-                      variant='h5'
-                      fontWeight='bold'
+                HORA
+              </TableCell>
+              {scheduleData.map((day, index) => (
+                <TableCell
+                  key={index}
+                  sx={{
+                    backgroundColor: '#FF9800',
+                    color          : 'white',
+                    fontWeight     : 'bold',
+                    fontSize       : '14px',
+                    textAlign      : 'center',
+                    minWidth       : '120px'
+                  }}
+                >
+                  <div>{day.day}</div>
+                  <div style={{ fontSize: '12px', marginTop: '4px' }}>{day.date}</div>
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {timeSlots.map((timeSlot, timeIndex) => (
+              <TableRow key={timeIndex}>
+                <TableCell
+                  sx={{
+                    backgroundColor: '#757575',
+                    color          : 'white',
+                    fontWeight     : 'bold',
+                    fontSize       : '12px',
+                    textAlign      : 'center',
+                    padding        : '8px'
+                  }}
+                >
+                  {timeSlot}
+                </TableCell>
+                {scheduleData.map((_, dayIndex) => {
+                  const { activity, color } = getActivityForTimeSlot(dayIndex, timeIndex)
+                  return (
+                    <TableCell
+                      key={dayIndex}
                       sx={{
-                        mb   : 1,
-                        color: 'text.primary'
+                        backgroundColor: color,
+                        color          : 'white',
+                        fontWeight     : '500',
+                        fontSize       : '11px',
+                        textAlign      : 'center',
+                        padding        : '8px',
+                        border         : '1px solid #fff',
+                        lineHeight     : 1.2
                       }}
                     >
-                      {item.day}
-                    </Typography>
-                    <Typography variant='h6' fontWeight='600' color='text.secondary'>
-                      {item.date}
-                    </Typography>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {item.activities.map((activity, actIndex) => (
-                      <Typography
-                        key={actIndex}
-                        variant='body2'
-                        fontWeight='500'
-                        color='text.primary'
-                        sx={{ lineHeight: 1.4 }}
-                      >
-                        {activity}
-                      </Typography>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </div>
-      </div>
+                      {activity}
+                    </TableCell>
+                  )
+                })}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Root>
   )
 }

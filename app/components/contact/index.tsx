@@ -1,6 +1,7 @@
 'use client'
 import {
   Facebook as FacebookIcon,
+  Instagram as InstagramIcon,
   WhatsApp as WhatsAppIcon
 } from '@mui/icons-material'
 import {
@@ -22,25 +23,22 @@ const Contact = () =>  {
         <Grid container spacing={2}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography fontWeight='bold' variant='h3'>¡Contactanos!</Typography>
-            <Typography className={classes.contactInformation} variant='subtitle1'>
-              Escribeme al Correo: <strong>coneia@gmail.com</strong>
+            <Typography className={classes.contactInformation} variant='body1'>
+              Estan son nuestras redes socieales <strong>tienes diferentes formas de contactarnos!</strong>
             </Typography>
-            <Typography className={classes.contactInformation} variant='subtitle1'>
-              Celular: <strong>+51 999999999</strong>
-            </Typography>
-            <Stack className={classes.buttonContactContainer} direction='row' spacing={1}>
-              <Button variant='outlined'>
-                Contactanos
-              </Button>
-              <IconButton>
+            <Stack className={classes.buttonContactContainer} direction='row' spacing={0.5}>
+              <IconButton component='a' href='https://www.facebook.com/share/1B4yrBS2kg/?mibextid=wwXIfr' target='_blank' rel='noopener noreferrer'>
                 <FacebookIcon fontSize='large' color='primary'/>
+              </IconButton>
+              <IconButton component='a' href='https://www.instagram.com/coneiaxiv?igsh=MTR6ZGJrZjF3azlxdQ==' target='_blank' rel='noopener noreferrer'>
+                <InstagramIcon fontSize='large' color='primary'/>
               </IconButton>
               <IconButton>
                 <WhatsAppIcon fontSize='large' color='primary'/>
               </IconButton>
             </Stack>
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ mt: 1 }}>
             <form>
               <FormControl fullWidth variant='standard'>
                 <InputLabel shrink htmlFor='name'>Nombre</InputLabel>

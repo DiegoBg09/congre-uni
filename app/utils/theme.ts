@@ -40,8 +40,7 @@ const theme = createTheme({
       main: '#3C87D3'
     },
     text: {
-      primary  : '#0F2B5B',
-      secondary: '#4AC4F4'
+      primary: '#0F2B5B',
     }
   },
   typography: {
