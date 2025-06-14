@@ -1,205 +1,76 @@
-'use client'
+import React from 'react'
 
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material'
+import { Box, Typography, Paper, Grid } from '@mui/material'
 
-import Root from './styles'
+const scheduleData = [
+  { day: 'Lunes', time: '07:00 – 09:00', activity: 'Inscripción y acreditación de participantes. Entrega de kits oficiales del congreso' },
+  { day: 'Lunes', time: '09:00 – 11:00', activity: 'Ceremonia de inauguración institucional y jornada de integración estudiantil' },
+  { day: 'Lunes', time: '11:00 – 14:00', activity: 'Ponencia central inaugural y ciclo de ponencias magistrales de expertos nacionales e internacionales' },
+  { day: 'Lunes', time: '14:00 – 15:00', activity: 'Receso. Almuerzo libre' },
+  { day: 'Lunes', time: '15:00 – 18:00', activity: 'Visita técnica guiada al Proyecto IILA – Universidad Nacional de Piura' },
+  { day: 'Lunes', time: '18:00 – 19:00', activity: 'Cena de confraternidad Institucional' },
+  { day: 'Lunes', time: '19:00 – 21:00', activity: 'Gala cultural y Noche de gala y cultural. Bienvenida regional' },
+  { day: 'Martes', time: '08:00 – 14:00', activity: 'Segundo bloque de ponencias magistrales a cargo de expertos nacionales e internacionales' },
+  { day: 'Martes', time: '14:00 – 15:00', activity: 'Receso. Almuerzo libre' },
+  { day: 'Martes', time: '15:00 – 19:00', activity: 'Ceremonia e inicio de los Juegos Deportivos Interuniversitarios del CONEIA' },
+  { day: 'Miércoles', time: '08:00 – 14:00', activity: 'Feria empresarial y rueda de talleres técnicos simultáneos' },
+  { day: 'Miércoles', time: '14:00 – 15:00', activity: 'Receso. Almuerzo libre' },
+  { day: 'Miércoles', time: '15:00 – 18:00', activity: 'Tarde científica: exposición de investigaciones y avances tecnológicos en Ingeniería Agrícola' },
+  { day: 'Miércoles', time: '19:00 – 20:00', activity: 'Asamblea general: Elección oficial de la nueva sede del próximo Congreso Nacional CLEIA - CONEIA' },
+  { day: 'Jueves', time: '06:00 – 14:00', activity: 'Visita técnica especializada: Irrigación San Lorenzo y Proyecto Especial Chira-Piura' },
+  { day: 'Jueves', time: '14:00 – 15:00', activity: 'Receso. Almuerzo libre' },
+  { day: 'Jueves', time: '15:00 – 18:00', activity: 'Continuación de visita técnica y diálogo abierto con especialistas de los sectores hidráulicos e hídricos' },
+  { day: 'Viernes', time: '08:00 – 14:00', activity: 'Presentación de casos de éxito: experiencias empresariales en ingeniería agrícola aplicada' },
+  { day: 'Viernes', time: '14:00 – 15:00', activity: 'Receso para almuerzo libre' },
+  { day: 'Viernes', time: '15:00 – 16:00', activity: 'Gran final. Premiación de los Juegos Deportivos' },
+  { day: 'Viernes', time: '16:00 – 17:00', activity: 'Ceremonia de clausura oficial y entrega de certificados físicos a los participantes a los Congresos' },
+  { day: 'Viernes', time: '17:00 – 18:00', activity: 'Sesión fotográfica conmemorativa con delegaciones, ingenieros invitados y empresarios' },
+  { day: 'Viernes', time: '21:00 en adelante', activity: 'Gran fiesta de confraternidad. Despedida oficial del congreso' },
+]
+
+const days = [ 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes' ]
+const times = [ ...new Set(scheduleData.map(item => item.time)) ]
+
+const getActivity = (day, time) => {
+  const item = scheduleData.find(entry => entry.day === day && entry.time === time)
+  return item ? item.activity : ''
+}
 
 const Schedule = () => {
-  const scheduleData = [
-    {
-      day       : 'LUNES',
-      date      : '20 OCT',
-      activities: [
-        'ACREDITACIÓN',
-        'INAUGURACIÓN E INTEGRACIÓN',
-        'PONENCIA CENTRAL',
-        'RECESO',
-        'VISITA TÉCNICA IILA',
-        'CENA INSTITUCIONAL',
-        'GALA CULTURAL',
-        '', '',
-      ]
-    },
-    {
-      day       : 'MARTES',
-      date      : '21 OCT',
-      activities: [
-        '',
-        'PONENCIAS MAGISTRALES',
-        '', '', '', '', '',
-        'RECESO',
-        'ACTIVIDADES DEPORTIVAS',
-        '', '', '',
-      ]
-    },
-    {
-      day       : 'MIÉRCOLES',
-      date      : '22 OCT',
-      activities: [
-        '',
-        'FERIA Y TALLERES TÉCNICOS',
-        '', '', '', '', '',
-        'RECESO',
-        'TARDE CIENTÍFICA',
-        'ASAMBLEA GENERAL',
-        '',
-        '',
-      ]
-    },
-    {
-      day       : 'JUEVES',
-      date      : '23 OCT',
-      activities: [
-        'VISITA TÉCNICA: SAN LORENZO',
-        '', '', '', '', '', '',
-        'RECESO',
-        'DIÁLOGO SECTOR HÍDRICO',
-        '', '', '',
-      ]
-    },
-    {
-      day       : 'VIERNES',
-      date      : '24 OCT',
-      activities: [
-        'PRESENTACIÓN DE CASOS',
-        '', '', '', '', '', '',
-        'RECESO',
-        'FINAL JUEGOS DEPORTIVOS',
-        'CLAUSURA Y CERTIFICADOS',
-        'FOTO CONMEMORATIVA',
-        '',
-        '',
-        'FIESTA DE CONFRATERNIDAD',
-      ]
-    }
-  ]
-
-
-  const timeSlots = [
-    '9:00 - 10:00',
-    '10:00 - 11:00',
-    '11:00 - 12:00',
-    '12:00 - 13:00',
-    '13:00 - 14:00',
-    '14:00 - 15:00',
-    '15:00 - 16:00',
-    '16:00 - 17:00',
-    '17:00 - 18:00',
-    '18:00 - 19:00',
-    '19:00 - 20:00',
-    '20:00 - 21:00',
-    '21:00 A MÁS'
-  ]
-
-  const getActivityForTimeSlot = (dayIndex: number, timeIndex: number) => {
-    const day = scheduleData[dayIndex]
-    if(!day || !day.activities[timeIndex]) return { activity: 'Libre', color: '#E91E63' }
-
-    const activity = day.activities[timeIndex]
-
-    if(activity.includes('INAUGURACIÓN')) return { activity, color: '#FF9800' }
-    if(activity.includes('PONENCIA') || activity.includes('PONENCIAS')) return { activity, color: '#00BCD4' }
-    if(activity.includes('VISITA')) return { activity, color: '#FFC107' }
-    if(activity.includes('INTEGRACIÓN')) return { activity, color: '#2196F3' }
-    if(activity.includes('DEPORTIVA') || activity.includes('DEPORTIVAS')) return { activity, color: '#8BC34A' }
-    if(activity.includes('CIENTÍFICA')) return { activity, color: '#9C27B0' }
-    if(activity.includes('FINALIZACIÓN') || activity.includes('CERTIFICADOS')) return { activity, color: '#FF5722' }
-    if(activity.includes('FIESTA') || activity.includes('CONFRATERNIDAD')) return { activity, color: '#E91E63' }
-
-    return { activity, color: '#607D8B' }
-  }
-
   return (
-    <Root>
-      <Box
-        sx={{
-          backgroundColor: '#8B4513',
-          color          : 'white',
-          padding        : '16px 32px',
-          borderRadius   : '25px',
-          display        : 'inline-block',
-          mb             : 4,
-          fontWeight     : 'bold',
-          fontSize       : '24px'
-        }}
-      >
-        CRONOGRAMA:
-      </Box>
+    <Box p={2}>
+      <Grid container spacing={1}>
+        <Grid size={2}>
+          <Paper sx={{ height: '100%', bgcolor: '#9E9E9E', p: 1 }}>
+            <Typography variant='h6' color='white' align='center'>Horario</Typography>
+          </Paper>
+        </Grid>
+        {days.map((day, index) => (
+          <Grid key={index}>
+            <Paper sx={{ bgcolor: '#FFA000', p: 1 }}>
+              <Typography variant='body1' align='center' color='white'>{day}</Typography>
+            </Paper>
+          </Grid>
+        ))}
 
-      <TableContainer component={Paper} sx={{ maxWidth: '100%', boxShadow: 3 }}>
-        <Table sx={{ minWidth: 650 }}>
-          <TableHead>
-            <TableRow>
-              <TableCell
-                sx={{
-                  backgroundColor: '#757575',
-                  color          : 'white',
-                  fontWeight     : 'bold',
-                  fontSize       : '14px',
-                  textAlign      : 'center'
-                }}
-              >
-                HORA
-              </TableCell>
-              {scheduleData.map((day, index) => (
-                <TableCell
-                  key={index}
-                  sx={{
-                    backgroundColor: '#FF9800',
-                    color          : 'white',
-                    fontWeight     : 'bold',
-                    fontSize       : '14px',
-                    textAlign      : 'center',
-                    minWidth       : '120px'
-                  }}
-                >
-                  <div>{day.day}</div>
-                  <div style={{ fontSize: '12px', marginTop: '4px' }}>{day.date}</div>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {timeSlots.map((timeSlot, timeIndex) => (
-              <TableRow key={timeIndex}>
-                <TableCell
-                  sx={{
-                    backgroundColor: '#757575',
-                    color          : 'white',
-                    fontWeight     : 'bold',
-                    fontSize       : '12px',
-                    textAlign      : 'center',
-                    padding        : '8px'
-                  }}
-                >
-                  {timeSlot}
-                </TableCell>
-                {scheduleData.map((_, dayIndex) => {
-                  const { activity, color } = getActivityForTimeSlot(dayIndex, timeIndex)
-                  return (
-                    <TableCell
-                      key={dayIndex}
-                      sx={{
-                        backgroundColor: color,
-                        color          : 'white',
-                        fontWeight     : '500',
-                        fontSize       : '11px',
-                        textAlign      : 'center',
-                        padding        : '8px',
-                        border         : '1px solid #fff',
-                        lineHeight     : 1.2
-                      }}
-                    >
-                      {activity}
-                    </TableCell>
-                  )
-                })}
-              </TableRow>
+        {times.map((time, rowIndex) => (
+          <React.Fragment key={rowIndex}>
+            <Grid size={2}>
+              <Paper sx={{ bgcolor: '#E0E0E0', height: '100%', p: 1 }}>
+                <Typography variant='body2' align='center'>{time}</Typography>
+              </Paper>
+            </Grid>
+            {days.map((day, colIndex) => (
+              <Grid key={`${rowIndex}-${colIndex}`}>
+                <Paper sx={{ minHeight: 70, bgcolor: '#4FC3F7', p: 1, color: 'white' }}>
+                  <Typography variant='caption'>{getActivity(day, time)}</Typography>
+                </Paper>
+              </Grid>
             ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Root>
+          </React.Fragment>
+        ))}
+      </Grid>
+    </Box>
   )
 }
 
