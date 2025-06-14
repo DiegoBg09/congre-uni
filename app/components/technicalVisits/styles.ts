@@ -29,6 +29,7 @@ export default styled(Container, {
   [`& .${classes.titleContainer}`]: {
     display   : 'flex',
     alignItems: 'center',
+    marginTop : spacing(4),
     gap       : spacing(3)
   }
 }))
