@@ -12,10 +12,11 @@ export default styled(Container, {
 })(({ theme: { spacing } }) => ({
   padding                         : spacing(4),
   [`& .${classes.containerImage}`]: {
-    width   : '100%',
-    height  : 'auto',
-    position: 'relative',
-    overflow: 'hidden'
+    width    : '100%',
+    height   : 'auto',
+    position : 'relative',
+    overflow : 'hidden',
+    marginTop: spacing(4)
   },
   [`& .${classes.imageSchedule}`]: {
     width    : '100%',

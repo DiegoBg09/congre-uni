@@ -25,22 +25,27 @@ const theme = createTheme({
   palette: {
     mode   : 'light',
     primary: {
-      main: '#0F2B5B'
+      main: '#8C5E3C'
     },
     secondary: {
-      main: '#4AC4F4'
+      main: '#4CA1A3'
     },
     success: {
-      main: '#B3D23F'
+      main: '#7BAF4B'
     },
     warning: {
-      main: '#F7981C'
+      main: '#E67E22'
     },
     info: {
-      main: '#3C87D3'
+      main: '#6C5CE7'
+    },
+    background: {
+      default: '#F9F9F9',
+      paper  : '#FFFFFF'
     },
     text: {
-      primary: '#0F2B5B',
+      primary  : '#7A3B1E',
+      secondary: '#4A5A1C'
     }
   },
   typography: {

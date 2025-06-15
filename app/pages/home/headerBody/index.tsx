@@ -15,7 +15,7 @@ const HeaderBody = () => (
       <Image src={logoCleia} alt='logo cleia'/>
       <Image src={logoConeia} alt='logo coneia' />
     </div>
-    <Typography variant='h4' fontWeight='bold' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
+    <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
     <Button
       className={classes.button}
       variant='contained'
