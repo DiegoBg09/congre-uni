@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 
-import Root, { classes } from './styles'
+import Root from './styles'
 
 const ListVisits = () => {
   return (
