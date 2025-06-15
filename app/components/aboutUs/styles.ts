@@ -8,7 +8,7 @@ export const classes = {
 
 export default styled(Container, {
   name: PREFIX
-})(({ theme: { breakpoints, spacing } }) => ({
+})(({ theme: { spacing } }) => ({
   display                        : 'flex',
   padding                        : spacing(5,0),
   justifyContent                 : 'space-between',

@@ -8,5 +8,5 @@ export const classes = {
 
 export default styled(Container, {
   name: PREFIX
-})(({ theme: { spacing } }) => ({
+})(() => ({
 }))
