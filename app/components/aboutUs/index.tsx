@@ -12,8 +12,8 @@ const AboutUs = () => (
     <div className={classes.infoContainer}>
       <Typography variant='h4' fontWeight='bold'>¿Quienes somos?</Typography>
       <Typography variant='body1'>
-        <b>El CLEIA (Congreso Latinoamericano y del Caribe de Estudiantes
-          de Ingeniería Agrícola) y el CONEIA (Congreso Nacional de
+        <b>CLEIA (Congreso Latinoamericano y del Caribe de Estudiantes
+          de Ingeniería Agrícola) y CONEIA (Congreso Nacional de
           Estudiantes de Ingeniería Agrícola)</b> son espacios clave, donde la
         pasión por la ingeniería se transforma en acción. El CLEIA conecta
         a jóvenes líderes de toda América Latina para compartir

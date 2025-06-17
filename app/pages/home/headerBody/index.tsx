@@ -3,8 +3,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp'
 import { Button, Typography } from '@mui/material'
 import Image from 'next/image'
 
-import logoCleia from '../../../assets/cleia-body.svg'
-import logoConeia from '../../../assets/logo-coneia.svg'
+import imageBody from '../../../assets/cleia-body.svg'
 
 
 import Root, { classes } from './styles'
@@ -12,8 +11,7 @@ import Root, { classes } from './styles'
 const HeaderBody = () => (
   <Root>
     <div className={classes.logoContainer}>
-      <Image src={logoCleia} alt='logo cleia'/>
-      <Image src={logoConeia} alt='logo coneia' />
+      <Image src={imageBody} alt='logo cleia' className={classes.imageBody}/>
     </div>
     <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
     <Button

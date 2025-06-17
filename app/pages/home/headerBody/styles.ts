@@ -6,6 +6,7 @@ export const classes = {
   button       : `${PREFIX}-button`,
   dateText     : `${PREFIX}-dateText`,
   logoContainer: `${PREFIX}-logoContainer`,
+  imageBody    : `${PREFIX}-imageBody`,
 }
 
 export default styled(Container, {
@@ -25,9 +26,14 @@ export default styled(Container, {
     marginTop: spacing(6),
   },
   [`& .${classes.logoContainer}`]: {
-    display       : 'flex',
-    alignItems    : 'center',
-    justifyContent: 'center',
-    gap           : spacing(3),
+    width   : '100%',
+    height  : 'auto',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+  [`& .${classes.imageBody}`]: {
+    width    : '100%',
+    height   : 'auto',
+    objectFit: 'contain'
   }
 }))

@@ -11,12 +11,12 @@ export default styled(Container, {
 })(({ theme: { spacing } }) => ({
   display                        : 'flex',
   padding                        : spacing(5,0),
-  justifyContent                 : 'space-between',
+  flexDirection                  : 'column',
   alignItems                     : 'center',
+  gap                            : spacing(3),
   [`& .${classes.infoContainer}`]: {
     display      : 'flex',
     flexDirection: 'column',
-    gap          : spacing(2),
-    paddingRight : spacing(15)
+    gap          : spacing(2)
   }
 }))
