@@ -6,19 +6,21 @@ export const classes = {
   contactInformation    : `${PREFIX}-contactInformation`,
   contactOulineInput    : `${PREFIX}-contactOulineInput`,
   buttonContainer       : `${PREFIX}-buttonContainer`,
-  buttonContactContainer: `${PREFIX}-buttonContactContainer`
+  buttonContactContainer: `${PREFIX}-buttonContactContainer`,
+  containerImage        : `${PREFIX}-containerImage`,
+  imageContact          : `${PREFIX}-imageContact`
 }
 
 export default styled('div', {
   name: PREFIX
 })(({ theme: { spacing, breakpoints } }) => ({
-  paddingTop                          : spacing(10),
-  paddingBottom                       : spacing(3),
+  paddingTop                          : spacing(8),
+  paddingBottom                       : spacing(5),
   display                             : 'flex',
   flexDirection                       : 'column',
   justifyContent                      : 'center',
   [`& .${classes.contactOulineInput}`]: {
-    marginTop   : spacing(4),
+    marginTop   : spacing(3),
     marginBottom: spacing(2)
   },
   [`& .${classes.buttonContainer}`]: {
@@ -38,5 +40,15 @@ export default styled('div', {
       marginTop   : spacing(2)
     },
     marginTop: spacing(2)
+  },
+  [`& .${classes.containerImage}`]: {
+    width    : '100%',
+    height   : 'auto',
+    position : 'relative',
+    overflow : 'hidden',
+    marginTop: spacing(4)
+  },
+  [`& .${classes.imageContact}`]: {
+    objectFit: 'contain'
   }
 }))

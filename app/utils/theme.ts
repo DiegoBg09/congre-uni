@@ -153,6 +153,23 @@ const theme = createTheme({
           borderRadius: 2
         }
       }
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          fontSize: '1rem',
+        },
+        shrink: {
+          fontSize : '1rem',
+          transform: 'translate(0, -1.5px) scale(0.85)',
+        },
+        outlined: {
+          fontSize: '1rem',
+        },
+        standard: {
+          fontSize: '1rem',
+        }
+      }
     }
   }
 })

@@ -7,7 +7,9 @@ import {
 import {
   Button, Container, FormControl, Grid, IconButton, InputLabel, OutlinedInput, Stack, Typography
 } from '@mui/material'
+import Image from 'next/image'
 
+import contactImage from '../../assets/contact.svg'
 
 import Root, { classes } from './styles'
 
@@ -20,7 +22,7 @@ const Contact = () =>  {
   return (
     <Root>
       <Container>
-        <Grid container spacing={2}>
+        <Grid container spacing={5}>
           <Grid size={{ xs: 12, md: 6 }}>
             <Typography fontWeight='bold' variant='h3'>¡Contactanos!</Typography>
             <Typography className={classes.contactInformation} variant='body1'>
@@ -37,6 +39,9 @@ const Contact = () =>  {
                 <WhatsAppIcon fontSize='large' color='primary'/>
               </IconButton>
             </Stack>
+            <div className={classes.containerImage}>
+              <Image height={200} className={classes.imageContact} src={contactImage} alt='contact' />
+            </div>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }} sx={{ mt: 1 }}>
             <form>
