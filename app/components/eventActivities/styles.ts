@@ -7,7 +7,8 @@ export const classes = {
   imageWrapper: `${PREFIX}-imageWrapper`,
   icon        : `${PREFIX}-icon`,
   title       : `${PREFIX}-title`,
-  description : `${PREFIX}-description`
+  description : `${PREFIX}-description`,
+  image       : `${PREFIX}-image`
 }
 
 export default styled(Container)(({ theme: { spacing , palette, shadows } }) => ({
@@ -23,9 +24,10 @@ export default styled(Container)(({ theme: { spacing , palette, shadows } }) => 
     height         : '100%'
   },
   [`& .${classes.imageWrapper}`]: {
-    position: 'relative',
     width   : '100%',
-    height  : 160
+    height  : 'auto',
+    position: 'relative',
+    overflow: 'hidden',
   },
   [`& .${classes.icon}`]: {
     width          : 56,
@@ -45,5 +47,10 @@ export default styled(Container)(({ theme: { spacing , palette, shadows } }) => 
     padding  : `0 ${spacing(2)}`,
     fontSize : 14,
     textAlign: 'justify'
+  },
+  [`& .${classes.image}`]: {
+    width    : '100%',
+    height   : 'auto',
+    objectFit: 'contain'
   }
 }))
