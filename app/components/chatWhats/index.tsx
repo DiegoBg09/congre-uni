@@ -171,15 +171,14 @@ const ChatWhats = () => {
               variant='contained'
               onClick={() => openWhatsApp('¡Hola! Quiero comprar una entrada para el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme información sobre los costos, métodos de pago y el proceso de inscripción? Gracias.')}
               sx={{
-                backgroundColor: '#25D366',
-                color          : 'white',
-                borderRadius   : '25px',
-                py             : 1.5,
-                textTransform  : 'none',
-                fontSize       : '14px',
-                fontWeight     : 'bold',
-                mb             : 1,
-                '&:hover'      : {
+                color        : 'white',
+                borderRadius : '25px',
+                py           : 1.5,
+                textTransform: 'none',
+                fontSize     : '14px',
+                fontWeight   : 'bold',
+                mb           : 1,
+                '&:hover'    : {
                   backgroundColor: '#128C7E',
                 },
               }}

@@ -24,7 +24,7 @@ const Contact = () =>  {
       <Container>
         <Grid container spacing={5}>
           <Grid size={{ xs: 12, md: 6 }}>
-            <Typography fontWeight='bold' variant='h3'>¡Contactanos!</Typography>
+            <Typography fontWeight='bold' variant='h3'>¡Contáctanos!</Typography>
             <Typography className={classes.contactInformation} variant='body1'>
               Estan son nuestras redes socieales <strong>tienes diferentes formas de contactarnos!</strong>
             </Typography>

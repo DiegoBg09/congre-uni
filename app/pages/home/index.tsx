@@ -1,5 +1,6 @@
 import AboutUs from '../../components/aboutUs'
 import Contact from '../../components/contact'
+import CountDown from '../../components/countDown'
 import EventActivities from '../../components/eventActivities'
 import Header from '../../components/header'
 import Mancora from '../../components/mancora'
@@ -14,8 +15,9 @@ const Home = () => (
     <AboutUs />
     <Mancora />
     <Schedule />
-    <TechnicalVisits />
     <EventActivities />
+    <TechnicalVisits />
+    <CountDown />
     <Contact />
   </>
 )

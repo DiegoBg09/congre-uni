@@ -11,7 +11,7 @@ export const classes = {
   image       : `${PREFIX}-image`
 }
 
-export default styled(Container)(({ theme: { spacing , palette, shadows } }) => ({
+export default styled(Container)(({ theme: { spacing , palette } }) => ({
   [`& .${classes.card}`]: {
     textAlign      : 'center',
     borderRadius   : spacing(2),
@@ -35,7 +35,6 @@ export default styled(Container)(({ theme: { spacing , palette, shadows } }) => 
     margin         : '-28px auto 8px auto',
     backgroundColor: palette.primary.main,
     color          : '#fff',
-    boxShadow      : shadows[2],
     zIndex         : 2
   },
   [`& .${classes.title}`]: {

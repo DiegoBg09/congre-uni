@@ -1,21 +1,9 @@
 'use client'
 import type {} from '@mui/material/themeCssVarsAugmentation'
 import { createTheme } from '@mui/material'
-import { Montserrat, Merriweather, Roboto } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 
-const montserrat = Montserrat({
-  weight : [ '400', '700' ],
-  subsets: [ 'latin' ],
-  display: 'swap',
-})
-
-const merriweather = Merriweather({
-  weight : [ '400', '700' ],
-  subsets: [ 'latin' ],
-  display: 'swap',
-})
-
-const roboto = Roboto({
+const poppins = Poppins({
   weight : [ '400', '700' ],
   subsets: [ 'latin' ],
   display: 'swap',
@@ -49,33 +37,33 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: merriweather.style.fontFamily,
+    fontFamily: poppins.style.fontFamily,
     h1        : {
-      fontFamily: montserrat.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     h2: {
-      fontFamily: montserrat.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     h3: {
-      fontFamily: montserrat.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     h4: {
-      fontFamily: montserrat.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     h5: {
-      fontFamily: montserrat.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     body1: {
-      fontFamily: merriweather.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     body2: {
-      fontFamily: merriweather.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     subtitle1: {
-      fontFamily: roboto.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     },
     subtitle2: {
-      fontFamily: roboto.style.fontFamily,
+      fontFamily: poppins.style.fontFamily,
     }
   },
   shape: {

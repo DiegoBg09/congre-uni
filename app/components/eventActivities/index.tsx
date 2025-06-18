@@ -9,6 +9,7 @@ import {
 import { Avatar, Grid, Paper, Typography } from '@mui/material'
 import Image from 'next/image'
 
+import olimpiadas from '../../assets/olimpiadas.svg'
 import visitasTecnicas from '../../assets/visitastecnicas.svg'
 
 import Root, { classes } from './styles'
@@ -28,21 +29,21 @@ const activities = [
   },
   {
     title      : 'FERIA AGRÍCOLA',
-    description: 'spacio donde empresas presentan oportunidades laborales, permitiendo a los participantes establecer conexiones profesionales con las empresas en un futuro.',
+    description: 'Espacio donde empresas presentan oportunidades laborales, permitiendo a los participantes establecer conexiones profesionales con las empresas en un futuro.',
     icon       : <BusinessCenterIcon />,
     image      : visitasTecnicas
   },
   {
     title      : 'NETWORKING',
-    description: 'spacio donde empresas presentan oportunidades laborales, permitiendo a los participantes establecer conexiones profesionales con las empresas en un futuro.',
+    description: 'Espacio diseñado para que los asistentes establezcan conexiones profesionales, compartan experiencias y generen oportunidades de colaboración en el ámbito de la ingeniería agrícola.',
     icon       : <GroupIcon />,
     image      : visitasTecnicas
   },
   {
     title      : 'OLIMPIADAS',
-    description: 'spacio donde empresas presentan oportunidades laborales, permitiendo a los participantes establecer conexiones profesionales con las empresas en un futuro.',
+    description: 'Competencias deportivas y recreativas que fomentan el trabajo en equipo, la integración y la sana competencia entre los participantes del congreso.',
     icon       : <SportsSoccerIcon />,
-    image      : visitasTecnicas
+    image      : olimpiadas
   }
 ]
 

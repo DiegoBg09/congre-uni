@@ -28,8 +28,8 @@ const technicalVisitsData = [
   },
   {
     image      : sanLorenzo,
-    alt        : 'Represa San Lorenzo',
-    title      : 'REPRESA SAN LORENZO',
+    alt        : 'Irrigación San Lorenzo',
+    title      : 'IRRIGACIÓN SAN LORENZO',
     description: 'Obras de ingeniería hidráulica que garantizan el abastecimiento de agua para la población y el desarrollo agrícola, protegiendo contra inundaciones y asegurando la sostenibilidad del recurso hídrico.'
   }
 ]
