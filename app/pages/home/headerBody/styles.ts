@@ -1,24 +1,32 @@
-import { Container, styled } from '@mui/material'
+import { Grid, styled } from '@mui/material'
 
 const PREFIX = 'HeaderBody'
 
 export const classes = {
+  content      : `${PREFIX}-content`,
   button       : `${PREFIX}-button`,
   dateText     : `${PREFIX}-dateText`,
   logoContainer: `${PREFIX}-logoContainer`,
   imageBody    : `${PREFIX}-imageBody`,
 }
 
-export default styled(Container, {
+export default styled(Grid, {
   name: PREFIX
 })(({ theme: { breakpoints, spacing } }) => ({
   [breakpoints.down('sm')]: {
     alignItems: 'flex-start'
   },
-  display                   : 'flex',
-  flexDirection             : 'column',
-  justifyContent            : 'center',
-  alignItems                : 'center',
+  display                  : 'grid',
+  gridTemplateColumns      : '1fr 1fr',
+  gridTemplateRows         : '1fr 1fr',
+  flexDirection            : 'column',
+  justifyContent           : 'center',
+  alignItems               : 'center',
+  [`& .${classes.content}`]: {
+    display      : 'flex',
+    flexDirection: 'column',
+    alignItems   : 'center',
+  },
   [`& .${classes.dateText}`]: {
     marginTop: spacing(4.5),
   },

@@ -89,7 +89,7 @@ const CountDown = () => {
                   ¡CERTIFÍCATE CON NOSOTROS!
                 </Typography>
                 <Typography color='white' variant='body1'>
-                  Agrega valor a tu CV y demuestra tu compromiso con la excelencia académica y profesional al ser parte de CONEII Piura 2025
+                  Agrega valor a tu CV y demuestra tu compromiso con la excelencia académica y profesional al ser parte de nuestro congreso en conjunto de CLEIA & CONEIA 2025 - UNP Piura
                 </Typography>
               </Grid>
             </Grid>

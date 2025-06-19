@@ -10,18 +10,23 @@ import Root, { classes } from './styles'
 
 const HeaderBody = () => (
   <Root>
-    <div className={classes.logoContainer}>
-      <Image src={imageBody} alt='logo cleia' className={classes.imageBody}/>
+    <div></div>
+    <div className={classes.content}>
+      <div className={classes.logoContainer}>
+        <Image src={imageBody} alt='logo cleia' className={classes.imageBody}/>
+      </div>
+      <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
+      <Button
+        className={classes.button}
+        variant='contained'
+        color='primary'
+        startIcon={<WhatsAppIcon />}
+      >
+        ¿Cómo adquiero mi entrada?
+      </Button>
     </div>
-    <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
-    <Button
-      className={classes.button}
-      variant='contained'
-      color='primary'
-      startIcon={<WhatsAppIcon />}
-    >
-      ¿Cómo adquiero mi entrada?
-    </Button>
+    <div></div>
+    <div></div>
   </Root>
 )
 
