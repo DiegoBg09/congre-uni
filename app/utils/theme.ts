@@ -38,32 +38,63 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: poppins.style.fontFamily,
-    h1        : {
-      fontFamily: poppins.style.fontFamily,
-    },
-    h2: {
-      fontFamily: poppins.style.fontFamily,
+    h2        : {
+      fontSize                   : '4rem',
+      '@media (max-width: 900px)': {
+        fontSize: '3rem'
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '2.5rem'
+      }
     },
     h3: {
-      fontFamily: poppins.style.fontFamily,
+      fontSize                   : '2.5rem',
+      '@media (max-width: 600px)': {
+        fontSize: '2rem'
+      }
     },
     h4: {
-      fontFamily: poppins.style.fontFamily,
+      fontSize                   : '2rem',
+      '@media (max-width: 600px)': {
+        fontSize: '1rem'
+      }
     },
     h5: {
-      fontFamily: poppins.style.fontFamily,
-    },
-    body1: {
-      fontFamily: poppins.style.fontFamily,
-    },
-    body2: {
-      fontFamily: poppins.style.fontFamily,
+      fontSize                   : '1.5rem',
+      '@media (max-width: 600px)': {
+        fontSize: '1rem'
+      }
     },
     subtitle1: {
-      fontFamily: poppins.style.fontFamily,
+      fontSize                   : '1.125rem',
+      '@media (max-width: 900px)': {
+        fontSize: '0.875rem'
+      }
     },
     subtitle2: {
-      fontFamily: poppins.style.fontFamily,
+      fontSize                   : '1rem',
+      fontWeight                 : '300',
+      '@media (max-width: 900px)': {
+        fontSize: '0.825rem'
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '0.75rem'
+      }
+    },
+    body1: {
+      fontSize                   : '1.25rem',
+      '@media (max-width: 900px)': {
+        fontSize: '1.125rem'
+      },
+      '@media (max-width: 600px)': {
+        fontSize: '1rem'
+      }
+    },
+    body2: {
+      fontSize                   : '0.875rem',
+      '@media (max-width: 600px)': {
+        fontSize: '0.75rem'
+      }
     }
   },
   shape: {

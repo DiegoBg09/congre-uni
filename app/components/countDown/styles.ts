@@ -27,7 +27,7 @@ export default styled('div', {
     gap          : spacing(3)
   },
   [`.${classes.containerCertificate}`]: {
-    background  : '#415914',
+    background  : '#76a124',
     borderRadius: spacing(2)
   },
   [`.${classes.imageCertificate}`]: {

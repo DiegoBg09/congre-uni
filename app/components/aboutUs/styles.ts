@@ -3,12 +3,14 @@ import { Container, styled } from '@mui/material'
 const PREFIX = 'AboutUs'
 
 export const classes = {
-  infoContainer: `${PREFIX}-infoContainer`
+  infoContainer : `${PREFIX}-infoContainer`,
+  imageContainer: `${PREFIX}-imageContainer`,
+  image         : `${PREFIX}-image`
 }
 
 export default styled(Container, {
   name: PREFIX
-})(({ theme: { spacing } }) => ({
+})(({ theme: { breakpoints, spacing } }) => ({
   display                        : 'flex',
   padding                        : spacing(5,0),
   flexDirection                  : 'column',
@@ -18,5 +20,20 @@ export default styled(Container, {
     display      : 'flex',
     flexDirection: 'column',
     gap          : spacing(2)
+  },
+  [`& .${classes.imageContainer}`]: {
+    display       : 'flex',
+    justifyContent: 'center',
+    width         : '100%',
+    height        : 'auto',
+    position      : 'relative',
+    overflow      : 'hidden',
+  },
+  [`& .${classes.image}`]: {
+    [breakpoints.down('md')]: {
+      width    : '100%',
+      height   : 'auto',
+      objectFit: 'contain'
+    },
   }
 }))

@@ -10,7 +10,7 @@ import Root, { classes } from './styles'
 const AboutUs = () => (
   <Root>
     <div className={classes.infoContainer}>
-      <Typography variant='h4' fontWeight='bold'>¿Quienes somos?</Typography>
+      <Typography variant='h3' fontWeight='bold'>¿Quienes somos?</Typography>
       <Typography variant='body1'>
         <b>CLEIA (Congreso Latinoamericano y del Caribe de Estudiantes
           de Ingeniería Agrícola) y CONEIA (Congreso Nacional de
@@ -25,7 +25,14 @@ const AboutUs = () => (
         ingenieros comprometidos con el desarrollo sostenible.
       </Typography>
     </div>
-    <Image src={aboutUsImage} alt='about us' />
+    <div className={classes.imageContainer}>
+      <Image
+        src={aboutUsImage}
+        alt='about us'
+        className={classes.image}
+        priority
+      />
+    </div>
   </Root>
 )
 

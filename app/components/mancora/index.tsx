@@ -6,7 +6,7 @@ import Root, { classes } from './styles'
 
 const statsData = [
   {
-    title      : '+1000',
+    title      : '+500',
     description: 'PROFESIONALES JUNTOS'
   },
   {
@@ -15,7 +15,7 @@ const statsData = [
   },
   {
     title      : 'VIVE',
-    description: 'LA MEJOR EXPERIENCIA'
+    description: 'LA MEJOR EXPERIENCIA DE TU VIDA'
   }
 ]
 

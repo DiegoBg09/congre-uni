@@ -9,7 +9,7 @@ import Root, { classes } from './styles'
 
 const Schedule = () => (
   <Root>
-    <Typography variant='h4' fontWeight='bold'>Cronograma</Typography>
+    <Typography variant='h4' fontWeight='bold' textAlign='center'>Cronograma</Typography>
     <div className={classes.containerImage}>
       <Image
         src={schedule}

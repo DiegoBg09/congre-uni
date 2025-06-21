@@ -114,7 +114,7 @@ const ChatWhats = () => {
                 <br />
                 📍 <strong>Lugar:</strong> Piura, Perú
                 <br />
-                👥 <strong>Dirigido a:</strong> Estudiantes y profesionales de Ingeniería Agrícola
+                👥 <strong>Dirigido a:</strong> Estudiantes y profesionales de Ingeniería Agrícola y carreras afines
                 <br />
                 🎯 <strong>Mision:</strong> Impulsar el desarrollo y tecnología en agricultura sostenible
               </Typography>
