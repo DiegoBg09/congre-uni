@@ -31,11 +31,12 @@ export default styled('div', {
   },
   [`.${classes.containerCertificate}`]: {
     background  : '#76a124',
-    borderRadius: spacing(2)
+    borderRadius: spacing(2),
   },
   [`.${classes.imageCertificate}`]: {
     borderRadius            : spacing(2, 0, 0, 2),
     [breakpoints.down('sm')]: {
+      marginTop   : spacing(2),
       borderRadius: spacing(2),
       width       : '100%',
       height      : 'auto',
@@ -51,8 +52,9 @@ export default styled('div', {
       paddingRight: spacing(1),
     },
     [breakpoints.down('sm')]: {
-      padding  : spacing(1),
-      textAlign: 'center'
+      padding     : spacing(1),
+      marginBottom: spacing(1),
+      textAlign   : 'center'
     }
   }
 }))

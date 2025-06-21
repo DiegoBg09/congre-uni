@@ -87,10 +87,10 @@ const CountDown = () => {
           </Typography>
           <div className={classes.containerCertificate}>
             <Grid container alignItems='center' spacing={2}>
-              <Grid size={{ xs: 4.5, md: 3 }} style={{ display: 'flex' }}>
+              <Grid size={{ xs: 10, sm: 4.5, md: 3 }} style={{ display: 'flex' }}>
                 <Image src={certificado} alt='Certificado' className={classes.imageCertificate}/>
               </Grid>
-              <Grid size={{ xs: 7.5, md: 9 }} className={classes.textCertificate}>
+              <Grid size={{ xs: 12, sm: 7.5, md: 9 }} className={classes.textCertificate}>
                 <Typography color='white' variant='h6' fontWeight='bold'>
                   ¡CERTIFÍCATE CON NOSOTROS!
                 </Typography>
