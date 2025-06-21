@@ -1,13 +1,19 @@
 'use client'
 
+import { useRef } from 'react'
+
 import {
   SpeakerNotes as SpeakerNotesIcon,
   Factory as FactoryIcon,
   BusinessCenter as BusinessCenterIcon,
   Group as GroupIcon,
   SportsSoccer as SportsSoccerIcon,
+  ArrowBack as ArrowBackIcon,
+  ArrowForward as ArrowForwardIcon,
 } from '@mui/icons-material'
-import { Avatar, Grid, Paper, Typography, useTheme, useMediaQuery } from '@mui/material'
+import {
+  Avatar, Grid, Paper, Typography, useTheme, useMediaQuery, IconButton, Box
+} from '@mui/material'
 import Image from 'next/image'
 
 import olimpiadas from '../../assets/olimpiadas.svg'
@@ -48,32 +54,53 @@ const activities = [
   },
 ]
 
+const SCROLL_AMOUNT = 300
+
 const EventActivities = () => {
   const theme = useTheme()
   const isMdDown = useMediaQuery(theme.breakpoints.down('md'))
 
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if(scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left    : direction === 'left' ? -SCROLL_AMOUNT : SCROLL_AMOUNT,
+        behavior: 'smooth',
+      })
+    }
+  }
+
   return (
     <Root>
       {isMdDown ? (
-        <div className={classes.scrollTrack}>
-          {activities.map((activity, i) => (
-            <Paper key={i} className={classes.card} elevation={4}>
-              <div className={classes.imageWrapper}>
-                <Image
-                  src={activity.image}
-                  alt={activity.title}
-                  className={classes.image}
-                  priority
-                />
-              </div>
-              <Avatar className={classes.icon}>{activity.icon}</Avatar>
-              <Typography className={classes.title} variant='h6'>
-                {activity.title}
-              </Typography>
-              <Typography className={classes.description}>{activity.description}</Typography>
-            </Paper>
-          ))}
-        </div>
+        <Box display='flex' alignItems='center'>
+          <IconButton color='primary' onClick={() => handleScroll('left')}>
+            <ArrowBackIcon />
+          </IconButton>
+          <div className={classes.scrollTrack} ref={scrollRef}>
+            {activities.map((activity, i) => (
+              <Paper key={i} className={classes.card} elevation={4}>
+                <div className={classes.imageWrapper}>
+                  <Image
+                    src={activity.image}
+                    alt={activity.title}
+                    className={classes.image}
+                    priority
+                  />
+                </div>
+                <Avatar className={classes.icon}>{activity.icon}</Avatar>
+                <Typography className={classes.title} variant='h6'>
+                  {activity.title}
+                </Typography>
+                <Typography className={classes.description}>{activity.description}</Typography>
+              </Paper>
+            ))}
+          </div>
+          <IconButton color='primary' onClick={() => handleScroll('right')}>
+            <ArrowForwardIcon />
+          </IconButton>
+        </Box>
       ) : (
         <Grid container columns={{ xs: 4, sm: 8, md: 12 }} columnSpacing={1} rowSpacing={4} mt={4}>
           {activities.map((activity, i) => (

@@ -50,7 +50,7 @@ const theme = createTheme({
     },
     h3: {
       fontSize                  : '2.25rem',
-      '@media (max-width:600px)': { fontSize: '1.75rem' },
+      '@media (max-width:600px)': { fontSize: '1.50rem' },
     },
     h4: {
       fontSize                  : '1.75rem',
@@ -59,6 +59,11 @@ const theme = createTheme({
     h5: {
       fontSize                  : '1.5rem',
       '@media (max-width:600px)': { fontSize: '1.125rem' },
+    },
+    h6: {
+      fontSize                  : '1.25rem',
+      '@media (max-width:900px)': { fontSize: '1rem' },
+      '@media (max-width:600px)': { fontSize: '1rem' },
     },
     subtitle1: {
       fontSize                  : '1.125rem',
@@ -73,8 +78,8 @@ const theme = createTheme({
     },
     body1: {
       fontSize                  : '1rem',
-      '@media (max-width:900px)': { fontSize: '0.9rem' },
-      '@media (max-width:600px)': { fontSize: '0.8rem' },
+      '@media (max-width:900px)': { fontSize: '0.875rem' },
+      '@media (max-width:600px)': { fontSize: '0.75rem' },
     },
     body2: {
       fontSize                  : '0.875rem',

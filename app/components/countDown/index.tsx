@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 
-import { Container, Grid, Typography } from '@mui/material'
+import { Container, Grid, Typography, useTheme, useMediaQuery } from '@mui/material'
 import Image from 'next/image'
 
 import certificado from '../../assets/certificado.svg'
@@ -33,6 +33,12 @@ const CountDown = () => {
   const hasMounted = useHasMounted()
   const [ timeLeft, setTimeLeft ] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
+  const theme = useTheme()
+  const isMdDown = useMediaQuery(theme.breakpoints.down('md'))
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const gridSpacing = isSmDown ? 6 : isMdDown ? 14 : 21
+
   useEffect(() => {
     if(!hasMounted) return
 
@@ -48,7 +54,7 @@ const CountDown = () => {
   return (
     <Root>
       <Container >
-        <Grid container justifyContent='center' spacing={21}>
+        <Grid container justifyContent='center' spacing={gridSpacing}>
           <Grid textAlign='center'>
             <Typography className={classes.number} color='white' fontWeight='bold' variant='h2'>
               {String(timeLeft.days).padStart(2, '0')}
@@ -76,20 +82,20 @@ const CountDown = () => {
         </Grid>
         <div className={classes.descriptionContainer}>
           <Typography variant='h5' color='white' fontWeight='bold'>¿Piensas perderte este congreso?</Typography>
-          <Typography variant='subtitle1' color='white'>
+          <Typography variant='subtitle1' color='white' textAlign='center'>
             Esta es tu oportunidad de aumentar tu red de contactos y <b>ser un mejor perfil profesional</b>
           </Typography>
           <div className={classes.containerCertificate}>
             <Grid container alignItems='center' spacing={2}>
-              <Grid size={{ xs: 12, md: 3 }} style={{ display: 'flex' }}>
+              <Grid size={{ xs: 4.5, md: 3 }} style={{ display: 'flex' }}>
                 <Image src={certificado} alt='Certificado' className={classes.imageCertificate}/>
               </Grid>
-              <Grid size={{ xs: 12, md: 9 }} className={classes.textCertificate}>
+              <Grid size={{ xs: 7.5, md: 9 }} className={classes.textCertificate}>
                 <Typography color='white' variant='h6' fontWeight='bold'>
                   ¡CERTIFÍCATE CON NOSOTROS!
                 </Typography>
                 <Typography color='white' variant='body1'>
-                  Enriquece tu currículum y destaca tu dedicación a la excelencia académica y profesional participando en nuestro congreso conjunto de CLEIA & CONEIA 2025 - UNP Piura.
+                  Enriquece tu currículum y destaca tu dedicación a la excelencia académica y profesional participando en nuestro congreso conjunto de <b>CLEIA & CONEIA 2025 - UNP Piura.</b>
                 </Typography>
               </Grid>
             </Grid>

@@ -49,6 +49,10 @@ export default styled('div', {
     marginTop: spacing(4)
   },
   [`& .${classes.imageContact}`]: {
-    objectFit: 'contain'
+    objectFit               : 'contain',
+    [breakpoints.down('sm')]: {
+      width : '100%',
+      height: 'auto'
+    }
   }
 }))

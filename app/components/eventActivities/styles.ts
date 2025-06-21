@@ -16,7 +16,7 @@ export default styled(Container)(({ theme: { spacing, palette, breakpoints } }) 
   [`& .${classes.scrollTrack}`]: {
     display                : 'flex',
     overflowX              : 'auto',
-    scrollSnapType         : 'x mandatory',
+    scrollSnapType         : 'x proximity',
     WebkitOverflowScrolling: 'touch',
     gap                    : spacing(3),
     paddingBottom          : spacing(3),
@@ -38,6 +38,8 @@ export default styled(Container)(({ theme: { spacing, palette, breakpoints } }) 
       '& > *': {
         flex: '0 0 100%',
       },
+      paddingTop   : spacing(2),
+      paddingBottom: spacing(2),
     },
   },
 

@@ -5,7 +5,9 @@ import {
   WhatsApp as WhatsAppIcon
 } from '@mui/icons-material'
 import {
-  Button, Container, FormControl, Grid, IconButton, InputLabel, OutlinedInput, Stack, Typography
+  Button, Container, FormControl, Grid, IconButton, InputLabel, OutlinedInput, Stack, Typography,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import Image from 'next/image'
 
@@ -18,6 +20,8 @@ const Contact = () =>  {
   const _handleClickSendMessage = () => {
     console.log('_handleClickSendMessage')
   }
+  const theme = useTheme()
+  const isSmUp = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
     <Root>
@@ -40,7 +44,7 @@ const Contact = () =>  {
               </IconButton>
             </Stack>
             <div className={classes.containerImage}>
-              <Image height={200} className={classes.imageContact} src={contactImage} alt='contact' />
+              <Image height={isSmUp ? 200 : undefined} className={classes.imageContact} src={contactImage} alt='contact' />
             </div>
           </Grid>
           <Grid size={{ xs: 12, md: 6 }} sx={{ mt: 1 }}>

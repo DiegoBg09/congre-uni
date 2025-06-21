@@ -1,8 +1,14 @@
 'use client'
-import { useMemo } from 'react'
 
-import { ArrowBack, SlowMotionVideo } from '@mui/icons-material'
-import { Card, CardContent, Typography, Stack, Button, Link } from '@mui/material'
+import { useMemo, useRef } from 'react'
+
+import {
+  ArrowBack, ArrowForward, SlowMotionVideo
+} from '@mui/icons-material'
+import {
+  Card, CardContent, Typography, Button, Link, Grid, useMediaQuery,
+  useTheme, IconButton, Box
+} from '@mui/material'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
@@ -36,77 +42,105 @@ const technicalVisitsData = [
 
 const TechnicalVisits = () => {
   const pathName = usePathname()
-
   const isShowAll = useMemo(() => pathName === '/visitas-tecnicas', [ pathName ])
-  // const isMobile = useMediaQuery('(max-width: 600px)')
+
+  const theme = useTheme()
+  const isSmDown = useMediaQuery(theme.breakpoints.down('sm'))
+
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const handleScroll = (direction: 'left' | 'right') => {
+    if(scrollRef.current) {
+      const amount = scrollRef.current.offsetWidth * 0.9
+      scrollRef.current.scrollBy({
+        left    : direction === 'left' ? -amount : amount,
+        behavior: 'smooth',
+      })
+    }
+  }
 
   return (
     <Root>
       <div className={classes.titleContainer}>
-        <Typography variant='h3' fontWeight='bold'>
-          Visitas Técnicas
-        </Typography>
-        {
-          isShowAll ?
-            <Button
-              component={Link}
-              href='/'
-              startIcon={<ArrowBack />}
-              variant='contained'
-              color='primary'
-              size='large'
-            >
-              Regresar al inicio
-            </Button>
-            :
-            <Button
-              component={Link}
-              href='/visitas-tecnicas'
-              startIcon={<SlowMotionVideo />}
-              variant='contained'
-              color='primary'
-              size='large'
-            >
-              Ver Visitas Técnicas
-            </Button>
-        }
+        <Typography variant='h3' fontWeight='bold'>Visitas Técnicas</Typography>
+        <Button
+          component={Link}
+          href={isShowAll ? '/' : '/visitas-tecnicas'}
+          startIcon={isShowAll ? <ArrowBack /> : <SlowMotionVideo />}
+          variant='contained'
+          color='primary'
+          size='large'
+          className={classes.button}
+        >
+          {isShowAll ? 'Regresar al inicio' : 'Visitas técnicas'}
+        </Button>
       </div>
-      {
-        isShowAll ?
-          <Typography variant='body1' my={3}>
-            Aqui les podemos mostrar los hermosos lugares que visitaremos en este congreso
-          </Typography> :
-          <Typography variant='body1' my={3}>
-            Visitas técnicas a infraestructuras clave del sistema hídrico y de desarrollo regional, donde los participantes exploran de cerca el funcionamiento de obras de ingeniería, la gestión del recurso agua y su impacto en el desarrollo agrícola y social. Estas experiencias permiten aplicar conocimientos teóricos en contextos reales y estratégicos para la región.
-          </Typography>
-      }
-      {
-        isShowAll ?
-          <ListVisits />
-          :
-          <Stack direction='row' flexWrap='wrap' justifyContent='center' gap={3}>
-            {technicalVisitsData.map((visit, index) => (
-              <Card key={index} sx={{ width: 368 }}>
-                <CardContent className={classes.cardContent}>
-                  <Image
-                    src={visit.image}
-                    alt={visit.alt}
-                    width={336}
-                    className={classes.imageCard}
-                  />
+
+      <Typography variant='body1' my={3}>
+        {isShowAll
+          ? 'Aquí les podemos mostrar los hermosos lugares que visitaremos en este congreso'
+          : 'Visitas técnicas a infraestructuras clave del sistema hídrico y de desarrollo regional, donde los participantes exploran de cerca el funcionamiento de obras de ingeniería, la gestión del recurso agua y su impacto en el desarrollo agrícola y social. Estas experiencias permiten aplicar conocimientos teóricos en contextos reales y estratégicos para la región.'}
+      </Typography>
+
+      {isShowAll ? (
+        <ListVisits />
+      ) : isSmDown ? (
+        <Box display='flex' alignItems='center'>
+          <IconButton color='primary' onClick={() => handleScroll('left')}>
+            <ArrowBack />
+          </IconButton>
+
+          <div className={classes.scrollTrack} ref={scrollRef}>
+            {technicalVisitsData.map((visit, i) => (
+              <div key={i} className={classes.cardWrapper}>
+                <Card className={classes.card}>
+                  <CardContent className={classes.cardContent} sx={{ p: 0 }}>
+                    <Image src={visit.image} alt={visit.alt} className={classes.imageCard} />
+                    <div className={classes.infoCard}>
+                      <Typography variant='h6' fontWeight='bold' textAlign='center'>{visit.title}</Typography>
+                      <Typography variant='body2' textAlign='center'>{visit.description}</Typography>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            ))}
+          </div>
+
+          <IconButton color='primary' onClick={() => handleScroll('right')}>
+            <ArrowForward />
+          </IconButton>
+        </Box>
+      ) : (
+        <Grid container spacing={3} justifyContent='center'>
+          {technicalVisitsData.map((visit, index) => (
+            <Grid
+              key={index}
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4
+              }}
+              sx={{
+                display: 'flex',
+                justifyContent:
+                  technicalVisitsData.length % 2 !== 0 && index === technicalVisitsData.length - 1
+                    ? 'center'
+                    : 'flex-start',
+              }}
+            >
+              <Card className={classes.card}>
+                <CardContent className={classes.cardContent} sx={{ p: 0 }}>
+                  <Image src={visit.image} alt={visit.alt} className={classes.imageCard} />
                   <div className={classes.infoCard}>
-                    <Typography variant='h6' fontWeight='bold' textAlign='center'>
-                      {visit.title}
-                    </Typography>
-                    <Typography variant='body2' textAlign='center'>
-                      {visit.description}
-                    </Typography>
+                    <Typography variant='h6' fontWeight='bold' textAlign='center'>{visit.title}</Typography>
+                    <Typography variant='body2' textAlign='center'>{visit.description}</Typography>
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </Stack>
-      }
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </Root>
   )
 }

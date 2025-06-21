@@ -31,9 +31,12 @@ export default styled('div', {
     paddingBottom: spacing(8),
   },
   [`& .${classes.infoContainer}`]: {
-    display      : 'flex',
-    flexDirection: 'column',
-    gap          : spacing(3.25)
+    display                 : 'flex',
+    flexDirection           : 'column',
+    gap                     : spacing(3.25),
+    [breakpoints.down('sm')]: {
+      gap: spacing(2)
+    }
   },
   [`& .${classes.statsCard}`]: {
     width          : '100%',
