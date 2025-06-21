@@ -36,10 +36,10 @@ const Mancora = () => (
         <CardContent className={classes.statsContainer}>
           {statsData.map((stat, index) => (
             <div key={index} className={classes.statItem}>
-              <Typography variant='h4' fontWeight='bold'>
+              <Typography variant='h3' fontWeight='bold'>
                 {stat.title}
               </Typography>
-              <Typography>
+              <Typography variant='body2' color='white'>
                 {stat.description}
               </Typography>
             </div>

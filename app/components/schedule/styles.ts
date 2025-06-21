@@ -9,14 +9,26 @@ export const classes = {
 
 export default styled(Container, {
   name: PREFIX
-})(({ theme: { spacing } }) => ({
-  padding                         : spacing(4),
+})(({ theme: {  breakpoints, spacing } }) => ({
+  padding                 : spacing(4),
+  [breakpoints.down('md')]: {
+    padding: spacing(3),
+  },
+  [breakpoints.down('sm')]: {
+    padding: spacing(2),
+  },
   [`& .${classes.containerImage}`]: {
-    width    : '100%',
-    height   : 'auto',
-    position : 'relative',
-    overflow : 'hidden',
-    marginTop: spacing(4)
+    width                   : '100%',
+    height                  : 'auto',
+    position                : 'relative',
+    overflow                : 'hidden',
+    marginTop               : spacing(4),
+    [breakpoints.down('md')]: {
+      marginTop: spacing(3),
+    },
+    [breakpoints.down('sm')]: {
+      marginTop: spacing(2),
+    },
   },
   [`& .${classes.imageSchedule}`]: {
     width    : '100%',

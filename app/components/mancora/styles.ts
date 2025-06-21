@@ -14,14 +14,22 @@ export const classes = {
 export default styled('div', {
   name: PREFIX
 })(({ theme: { spacing, shadows, breakpoints } }) => ({
-  display                        : 'flex',
-  flexDirection                  : 'column',
-  paddingTop                     : spacing(8),
-  paddingBottom                  : spacing(35),
-  backgroundImage                : `url(${mancoraImage.src})`,
-  backgroundRepeat               : 'no-repeat',
-  backgroundPosition             : 'center',
-  backgroundSize                 : 'cover',
+  display                 : 'flex',
+  flexDirection           : 'column',
+  paddingTop              : spacing(8),
+  paddingBottom           : spacing(35),
+  backgroundImage         : `url(${mancoraImage.src})`,
+  backgroundRepeat        : 'no-repeat',
+  backgroundPosition      : 'center',
+  backgroundSize          : 'cover',
+  [breakpoints.down('md')]: {
+    paddingTop   : spacing(5),
+    paddingBottom: spacing(20),
+  },
+  [breakpoints.down('sm')]: {
+    paddingTop   : spacing(2.5),
+    paddingBottom: spacing(8),
+  },
   [`& .${classes.infoContainer}`]: {
     display      : 'flex',
     flexDirection: 'column',

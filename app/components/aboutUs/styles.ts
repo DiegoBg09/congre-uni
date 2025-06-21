@@ -17,6 +17,9 @@ export default styled(Container, {
   alignItems              : 'center',
   gap                     : spacing(3),
   [breakpoints.down('md')]: {
+    padding: spacing(4, 3),
+  },
+  [breakpoints.down('sm')]: {
     padding: spacing(3, 2),
   },
   [`& .${classes.infoContainer}`]: {

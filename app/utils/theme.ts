@@ -38,63 +38,47 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: poppins.style.fontFamily,
-    h2        : {
-      fontSize                   : '4rem',
-      '@media (max-width: 900px)': {
-        fontSize: '3rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '2.5rem'
-      }
+    h1        : {
+      fontSize                  : '4rem',
+      '@media (max-width:900px)': { fontSize: '3rem' },
+      '@media (max-width:600px)': { fontSize: '2.25rem' },
+    },
+    h2: {
+      fontSize                  : '3rem',
+      '@media (max-width:900px)': { fontSize: '2.5rem' },
+      '@media (max-width:600px)': { fontSize: '2rem' },
     },
     h3: {
-      fontSize                   : '2.5rem',
-      '@media (max-width: 600px)': {
-        fontSize: '2rem'
-      }
+      fontSize                  : '2.25rem',
+      '@media (max-width:600px)': { fontSize: '1.75rem' },
     },
     h4: {
-      fontSize                   : '2rem',
-      '@media (max-width: 600px)': {
-        fontSize: '1rem'
-      }
+      fontSize                  : '1.75rem',
+      '@media (max-width:600px)': { fontSize: '1.25rem' },
     },
     h5: {
-      fontSize                   : '1.5rem',
-      '@media (max-width: 600px)': {
-        fontSize: '1rem'
-      }
+      fontSize                  : '1.5rem',
+      '@media (max-width:600px)': { fontSize: '1.125rem' },
     },
     subtitle1: {
-      fontSize                   : '1.125rem',
-      '@media (max-width: 900px)': {
-        fontSize: '0.875rem'
-      }
+      fontSize                  : '1.125rem',
+      '@media (max-width:900px)': { fontSize: '1rem' },
+      '@media (max-width:600px)': { fontSize: '0.9rem' },
     },
     subtitle2: {
-      fontSize                   : '1rem',
-      fontWeight                 : '300',
-      '@media (max-width: 900px)': {
-        fontSize: '0.825rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '0.75rem'
-      }
+      fontSize                  : '1rem',
+      fontWeight                : 300,
+      '@media (max-width:900px)': { fontSize: '0.875rem' },
+      '@media (max-width:600px)': { fontSize: '0.75rem' },
     },
     body1: {
-      fontSize                   : '1.25rem',
-      '@media (max-width: 900px)': {
-        fontSize: '1.125rem'
-      },
-      '@media (max-width: 600px)': {
-        fontSize: '1rem'
-      }
+      fontSize                  : '1rem',
+      '@media (max-width:900px)': { fontSize: '0.9rem' },
+      '@media (max-width:600px)': { fontSize: '0.8rem' },
     },
     body2: {
-      fontSize                   : '0.875rem',
-      '@media (max-width: 600px)': {
-        fontSize: '0.75rem'
-      }
+      fontSize                  : '0.875rem',
+      '@media (max-width:600px)': { fontSize: '0.75rem' },
     }
   },
   shape: {
