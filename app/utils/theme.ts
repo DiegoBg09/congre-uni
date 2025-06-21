@@ -127,7 +127,7 @@ const theme = createTheme({
           backgroundImage            : 'url("/background.svg")',
           backgroundSize             : 'cover',
           backgroundPosition         : 'center center',
-          backgroundRepeat           : 'no-repeat',
+          backgroundRepeat           : 'repeat',
           backgroundAttachment       : 'fixed',
           minHeight                  : '100vh',
           '@media (max-width: 768px)': {
