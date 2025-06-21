@@ -5,17 +5,18 @@ import Image from 'next/image'
 
 import imageBody from '../../../assets/cleia-body.svg'
 
-
 import Root, { classes } from './styles'
 
 const HeaderBody = () => (
   <Root>
-    <div></div>
+    <div className={classes.hideOnMobile}></div>
     <div className={classes.content}>
       <div className={classes.logoContainer}>
-        <Image src={imageBody} alt='logo cleia' className={classes.imageBody}/>
+        <Image src={imageBody} alt='logo cleia' className={classes.imageBody} />
       </div>
-      <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>DEL 20 AL 24 DE OCTUBRE</Typography>
+      <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>
+        DEL 20 AL 24 DE OCTUBRE
+      </Typography>
       <Button
         className={classes.button}
         variant='contained'
@@ -25,8 +26,8 @@ const HeaderBody = () => (
         ¿Cómo adquiero mi entrada?
       </Button>
     </div>
-    <div></div>
-    <div></div>
+    <div className={classes.hideOnMobile}></div>
+    <div className={classes.hideOnMobile}></div>
   </Root>
 )
 

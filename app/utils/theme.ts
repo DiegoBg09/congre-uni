@@ -147,8 +147,11 @@ const theme = createTheme({
       },
       styleOverrides: {
         root: {
-          textTransform: 'none',
-          borderRadius : 12
+          textTransform              : 'none',
+          borderRadius               : 12,
+          '@media (max-width: 600px)': {
+            fontSize: '0.55rem',
+          }
         }
       }
     },

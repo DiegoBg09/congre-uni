@@ -13,7 +13,7 @@ export const classes = {
 
 export default styled('div', {
   name: PREFIX
-})(({ theme: { spacing, palette, shadows, breakpoints } }) => ({
+})(({ theme: { spacing, shadows, breakpoints } }) => ({
   display                        : 'flex',
   flexDirection                  : 'column',
   paddingTop                     : spacing(8),
@@ -29,7 +29,7 @@ export default styled('div', {
   },
   [`& .${classes.statsCard}`]: {
     width          : '100%',
-    backgroundColor: palette.success.main,
+    backgroundColor: '#2f411e',
     borderRadius   : spacing(1),
     marginTop      : spacing(3),
     boxShadow      : shadows[4],

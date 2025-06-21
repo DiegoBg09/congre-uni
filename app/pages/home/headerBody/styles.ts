@@ -8,40 +8,74 @@ export const classes = {
   dateText     : `${PREFIX}-dateText`,
   logoContainer: `${PREFIX}-logoContainer`,
   imageBody    : `${PREFIX}-imageBody`,
+  hideOnMobile : `${PREFIX}-hideOnMobile`,
 }
 
 export default styled(Grid, {
-  name: PREFIX
+  name: PREFIX,
 })(({ theme: { breakpoints, spacing } }) => ({
-  [breakpoints.down('sm')]: {
-    alignItems: 'flex-start'
+  display            : 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridTemplateRows   : '1fr 1fr',
+  alignItems         : 'center',
+  justifyContent     : 'center',
+
+  [breakpoints.down('md')]: {
+    gridTemplateColumns: '1fr',
+    gridTemplateRows   : 'auto',
   },
-  display                  : 'grid',
-  gridTemplateColumns      : '1fr 1fr',
-  gridTemplateRows         : '1fr 1fr',
-  flexDirection            : 'column',
-  justifyContent           : 'center',
-  alignItems               : 'center',
+
+  [`& .${classes.hideOnMobile}`]: {
+    [breakpoints.down('md')]: {
+      display: 'none',
+    }
+  },
+
   [`& .${classes.content}`]: {
-    display      : 'flex',
-    flexDirection: 'column',
-    alignItems   : 'center',
+    display       : 'flex',
+    flexDirection : 'column',
+    alignItems    : 'center',
+    justifyContent: 'center',
+    textAlign     : 'center',
+
+    [breakpoints.down('md')]: {
+      gridColumn: '1',
+    },
+
+    [breakpoints.up('md')]: {
+      gridColumn: '2',
+      gridRow   : '1',
+    },
   },
+
   [`& .${classes.dateText}`]: {
-    marginTop: spacing(4.5),
+    marginTop               : spacing(4),
+    marginLeft              : spacing(5),
+    [breakpoints.down('md')]: {
+      marginTop : spacing(2),
+      marginLeft: spacing(2),
+    },
   },
+
   [`& .${classes.button}`]: {
-    marginTop: spacing(6),
+    marginTop               : spacing(4.5),
+    marginLeft              : spacing(5),
+    [breakpoints.down('md')]: {
+      marginTop : spacing(2),
+      marginLeft: spacing(2),
+    },
   },
+
   [`& .${classes.logoContainer}`]: {
     width   : '100%',
     height  : 'auto',
     position: 'relative',
     overflow: 'hidden',
   },
+
   [`& .${classes.imageBody}`]: {
     width    : '100%',
     height   : 'auto',
-    objectFit: 'contain'
-  }
+    objectFit: 'contain',
+  },
 }))

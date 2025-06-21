@@ -15,7 +15,7 @@ export default styled('div', {
   position                : 'relative',
   overflow                : 'hidden',
   [breakpoints.down('md')]: {
-    height: '40vh',
+    height: '65vh',
   },
   [breakpoints.down('sm')]: {
     height: '40vh',
