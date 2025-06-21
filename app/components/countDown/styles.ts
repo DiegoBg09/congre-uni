@@ -30,13 +30,18 @@ export default styled('div', {
     }
   },
   [`.${classes.containerCertificate}`]: {
-    background  : '#76a124',
-    borderRadius: spacing(2),
+    background              : '#76a124',
+    borderRadius            : spacing(2),
+    [breakpoints.down('sm')]: {
+      display      : 'flex',
+      flexDirection: 'column',
+      alignItems   : 'center'
+    }
   },
   [`.${classes.imageCertificate}`]: {
     borderRadius            : spacing(2, 0, 0, 2),
     [breakpoints.down('sm')]: {
-      marginTop   : spacing(2),
+      margin      : spacing(2, 2, 0, 2),
       borderRadius: spacing(2),
       width       : '100%',
       height      : 'auto',

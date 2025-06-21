@@ -87,15 +87,15 @@ const CountDown = () => {
           </Typography>
           <div className={classes.containerCertificate}>
             <Grid container alignItems='center' spacing={2}>
-              <Grid size={{ xs: 10, sm: 4.5, md: 3 }} style={{ display: 'flex' }}>
+              <Grid size={{ xs: 12, sm: 4.5, md: 3.5 }} style={{ display: 'flex' }}>
                 <Image src={certificado} alt='Certificado' className={classes.imageCertificate}/>
               </Grid>
-              <Grid size={{ xs: 12, sm: 7.5, md: 9 }} className={classes.textCertificate}>
+              <Grid size={{ xs: 12, sm: 7.5, md: 8.5 }} className={classes.textCertificate}>
                 <Typography color='white' variant='h6' fontWeight='bold'>
                   ¡CERTIFÍCATE CON NOSOTROS!
                 </Typography>
                 <Typography color='white' variant='body1'>
-                  Enriquece tu currículum y destaca tu dedicación a la excelencia académica y profesional participando en nuestro congreso conjunto de <b>CLEIA & CONEIA 2025 - UNP Piura.</b>
+                  Enriquece tu currículum y destaca tu dedicación a la excelencia académica y profesional participando en nuestro congreso conjunto de<b>CLEIA & CONEIA 2025 - UNP Piura.</b>
                 </Typography>
               </Grid>
             </Grid>
