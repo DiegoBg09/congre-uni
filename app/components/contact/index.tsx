@@ -123,7 +123,7 @@ const Contact = () => {
                 />
               </FormControl>
               <Fade in={sent} timeout={300}>
-                <Stack direction='row' spacing={1} alignItems='center' sx={{ mt: 2 }}>
+                <Stack direction='row' spacing={1} alignItems='center' sx={{ mb: 2 }} justifyContent='center'>
                   <CheckCircleIcon color='success' />
                   <Typography variant='body2' color='success.main'>
                     Se envió el correo correctamente
