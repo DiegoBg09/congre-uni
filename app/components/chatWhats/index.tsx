@@ -31,12 +31,14 @@ const ChatWhats = () => {
   const [ isOpen, setIsOpen ] = useState(false)
   const [ currentStep, setCurrentStep ] = useState<ChatStep>('initial')
   const [ selectedPhone, setSelectedPhone ] = useState<string>('')
+  const [ previousStep, setPreviousStep ] = useState<ChatStep>('initial') // 👈 nuevo estado
 
   const toggleChat = () => {
     setIsOpen(!isOpen)
     if(!isOpen) {
       setCurrentStep('initial')
       setSelectedPhone('')
+      setPreviousStep('initial')
     }
   }
 
@@ -60,23 +62,20 @@ const ChatWhats = () => {
 
   const handlePhoneSelection = (phone: string) => {
     setSelectedPhone(phone)
-    // Volver al paso anterior (info o tickets)
-    if(currentStep === 'info') {
+
+    if(previousStep === 'info') {
       openWhatsApp('Hola! Me interesa obtener más información detallada sobre el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme el programa completo y detalles adicionales?')
-    } else if(currentStep === 'tickets') {
+    } else if(previousStep === 'tickets') {
       openWhatsApp('¡Hola! Quiero comprar una entrada para el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme información sobre los costos, métodos de pago y el proceso de inscripción? Gracias.')
     }
+
     setCurrentStep('initial')
+    setPreviousStep('initial')
   }
 
   const handleContactClick = (step: 'info' | 'tickets') => {
+    setPreviousStep(step) // 👈 guardamos desde dónde viene
     setCurrentStep('phone')
-    // Guardar temporalmente el paso para volver después de seleccionar teléfono
-    if(step === 'info') {
-      setCurrentStep('phone')
-    } else if(step === 'tickets') {
-      setCurrentStep('phone')
-    }
   }
 
   const renderContent = () => {
@@ -127,7 +126,7 @@ const ChatWhats = () => {
                 <br />
                 👥 <strong>Dirigido a:</strong> Estudiantes y profesionales de Ingeniería Agrícola y carreras afines
                 <br />
-                🎯 <strong>Mision:</strong> Impulsar el desarrollo y tecnología en agricultura sostenible
+                🎯 <strong>Misión:</strong> Impulsar el desarrollo y tecnología en agricultura sostenible
               </Typography>
             </Paper>
             <Button
