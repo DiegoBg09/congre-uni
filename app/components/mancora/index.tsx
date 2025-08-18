@@ -22,7 +22,7 @@ const statsData = [
 const Mancora = () => (
   <Root>
     <Container className={classes.infoContainer}>
-      <Typography variant='h4' fontWeight='bold' color='white'>CLEAIA & CONEIA 2025 - UNP PIURA </Typography>
+      <Typography variant='h4' fontWeight='bold' color='white'>CLEIA & CONEIA 2025 - UNP PIURA </Typography>
       <Typography variant='body1' color='white'>
         El congreso se realizará en Piura debido a su importancia como uno de los centros más dinámicos del norte del país y
         por su estratégica ubicación que facilita la conectividad. Además, Piura ofrece una rica diversidad cultural y turística,

@@ -5,8 +5,10 @@ import { useState } from 'react'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import CloseIcon from '@mui/icons-material/Close'
 import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import { Fab, Box, Paper, Typography, Button, IconButton } from '@mui/material'
+import { Fab, Paper, Typography, Button, IconButton } from '@mui/material'
 import { keyframes } from '@mui/system'
+
+import Root, { classes } from './styles'
 
 const pulse = keyframes`
   0% {
@@ -23,22 +25,25 @@ const pulse = keyframes`
   }
 `
 
-type ChatStep = 'initial' | 'info' | 'tickets'
+type ChatStep = 'initial' | 'info' | 'tickets' | 'phone'
 
 const ChatWhats = () => {
   const [ isOpen, setIsOpen ] = useState(false)
   const [ currentStep, setCurrentStep ] = useState<ChatStep>('initial')
+  const [ selectedPhone, setSelectedPhone ] = useState<string>('')
 
   const toggleChat = () => {
     setIsOpen(!isOpen)
     if(!isOpen) {
       setCurrentStep('initial')
+      setSelectedPhone('')
     }
   }
 
   const openWhatsApp = (message: string) => {
     const encodedMessage = encodeURIComponent(message)
-    window.open(`https://wa.me/51900536082?text=${encodedMessage}`, '_blank')
+    const phoneNumber = selectedPhone || '51900536082' // número por defecto si no se ha seleccionado
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
   }
 
   const handleInfoClick = () => {
@@ -53,12 +58,33 @@ const ChatWhats = () => {
     setCurrentStep('initial')
   }
 
+  const handlePhoneSelection = (phone: string) => {
+    setSelectedPhone(phone)
+    // Volver al paso anterior (info o tickets)
+    if(currentStep === 'info') {
+      openWhatsApp('Hola! Me interesa obtener más información detallada sobre el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme el programa completo y detalles adicionales?')
+    } else if(currentStep === 'tickets') {
+      openWhatsApp('¡Hola! Quiero comprar una entrada para el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme información sobre los costos, métodos de pago y el proceso de inscripción? Gracias.')
+    }
+    setCurrentStep('initial')
+  }
+
+  const handleContactClick = (step: 'info' | 'tickets') => {
+    setCurrentStep('phone')
+    // Guardar temporalmente el paso para volver después de seleccionar teléfono
+    if(step === 'info') {
+      setCurrentStep('phone')
+    } else if(step === 'tickets') {
+      setCurrentStep('phone')
+    }
+  }
+
   const renderContent = () => {
     switch (currentStep) {
       case 'initial':
         return (
           <>
-            <Paper elevation={1} sx={{ p: 2, borderRadius: '15px', mb: 2 }}>
+            <Paper elevation={1} className={classes.messagePaper}>
               <Typography variant='body2'>
                 ¡Hola! 👋
                 <br />
@@ -67,16 +93,12 @@ const ChatWhats = () => {
                 ¿En qué puedo ayudarte?
               </Typography>
             </Paper>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div className={classes.buttonContainer}>
               <Button
                 fullWidth
                 variant='outlined'
                 onClick={handleInfoClick}
-                sx={{
-                  borderRadius : '25px',
-                  py           : 1.2,
-                  textTransform: 'none',
-                }}
+                className={classes.actionButton}
               >
                 📋 Información del congreso
               </Button>
@@ -84,11 +106,7 @@ const ChatWhats = () => {
                 fullWidth
                 variant='outlined'
                 onClick={handleTicketsClick}
-                sx={{
-                  borderRadius : '25px',
-                  py           : 1.2,
-                  textTransform: 'none',
-                }}
+                className={classes.actionButton}
               >
                 🎫 Comprar entrada
               </Button>
@@ -98,14 +116,7 @@ const ChatWhats = () => {
       case 'info':
         return (
           <>
-            <Paper
-              elevation={1}
-              sx={{
-                p           : 2,
-                borderRadius: '15px',
-                mb          : 2,
-              }}
-            >
+            <Paper elevation={1} className={classes.messagePaper}>
               <Typography variant='body2' sx={{ color: '#333', lineHeight: 1.5, mb: 1 }}>
                 <strong>📋 Información del Congreso</strong>
               </Typography>
@@ -122,13 +133,8 @@ const ChatWhats = () => {
             <Button
               fullWidth
               variant='contained'
-              onClick={() => openWhatsApp('Hola! Me interesa obtener más información detallada sobre el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme el programa completo y detalles adicionales?')}
-              sx={{
-                borderRadius: '25px',
-                py          : 1.5,
-                fontWeight  : 'bold',
-                mb          : 1,
-              }}
+              onClick={() => handleContactClick('info')}
+              className={classes.infoButton}
             >
               💬 Solicitar más información
             </Button>
@@ -137,6 +143,7 @@ const ChatWhats = () => {
               variant='text'
               onClick={handleBackClick}
               startIcon={<ArrowBackIcon />}
+              className={classes.backButton}
             >
               Volver al menú
             </Button>
@@ -145,15 +152,7 @@ const ChatWhats = () => {
       case 'tickets':
         return (
           <>
-            <Paper
-              elevation={1}
-              sx={{
-                p              : 2,
-                borderRadius   : '15px',
-                backgroundColor: 'white',
-                mb             : 2,
-              }}
-            >
+            <Paper elevation={1} className={classes.messagePaper}>
               <Typography variant='body2' sx={{ color: '#333', lineHeight: 1.5, mb: 1 }}>
                 <strong>🎫 Información de Entradas</strong>
               </Typography>
@@ -169,19 +168,8 @@ const ChatWhats = () => {
             <Button
               fullWidth
               variant='contained'
-              onClick={() => openWhatsApp('¡Hola! Quiero comprar una entrada para el Congreso Nacional de Ingeniería Agrícola. ¿Podrían enviarme información sobre los costos, métodos de pago y el proceso de inscripción? Gracias.')}
-              sx={{
-                color        : 'white',
-                borderRadius : '25px',
-                py           : 1.5,
-                textTransform: 'none',
-                fontSize     : '14px',
-                fontWeight   : 'bold',
-                mb           : 1,
-                '&:hover'    : {
-                  backgroundColor: '#128C7E',
-                },
-              }}
+              onClick={() => handleContactClick('tickets')}
+              className={classes.ticketsButton}
             >
               🛒 Comprar entrada
             </Button>
@@ -191,11 +179,44 @@ const ChatWhats = () => {
               variant='text'
               onClick={handleBackClick}
               startIcon={<ArrowBackIcon />}
-              sx={{
-                color        : '#666',
-                textTransform: 'none',
-                fontSize     : '12px',
-              }}
+              className={classes.backButton}
+            >
+              Volver al menú
+            </Button>
+          </>
+        )
+      case 'phone':
+        return (
+          <>
+            <Paper elevation={1} className={classes.messagePaper}>
+              <Typography variant='body2' sx={{ color: '#333', lineHeight: 1.5, mb: 2 }}>
+                <strong>📞 Selecciona un número de contacto:</strong>
+              </Typography>
+              <div className={classes.buttonContainer}>
+                <Button
+                  fullWidth
+                  variant='outlined'
+                  onClick={() => handlePhoneSelection('51925038058')}
+                  className={classes.phoneButton}
+                >
+                  📱 925 038 058
+                </Button>
+                <Button
+                  fullWidth
+                  variant='outlined'
+                  onClick={() => handlePhoneSelection('51955230045')}
+                  className={classes.phoneButton}
+                >
+                  📱 955 230 045
+                </Button>
+              </div>
+            </Paper>
+            <Button
+              fullWidth
+              variant='text'
+              onClick={handleBackClick}
+              startIcon={<ArrowBackIcon />}
+              className={classes.backButton}
             >
               Volver al menú
             </Button>
@@ -205,49 +226,29 @@ const ChatWhats = () => {
         return null
     }
   }
+
   return (
-    <Box sx={{ position: 'fixed', bottom: 20, right: 20, zIndex: 9999 }}>
+    <Root>
       {isOpen && (
-        <Paper
-          elevation={8}
-          sx={{
-            position       : 'absolute',
-            bottom         : 80,
-            right          : 0,
-            width          : 400,
-            borderRadius   : '20px',
-            overflow       : 'hidden',
-            transform      : isOpen ? 'scale(1)' : 'scale(0)',
-            transformOrigin: 'bottom right',
-            transition     : 'transform 0.3s ease',
-          }}
-        >
-          <div
-            style={{
-              background    : 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
-              padding       : '16px',
-              display       : 'flex',
-              justifyContent: 'space-between',
-              alignItems    : 'center',
-            }}
-          >
-            <div>
-              <Typography variant='body2' sx={{ opacity: 0.9, fontSize: '12px' }}>
+        <Paper elevation={8} className={classes.chatWindow}>
+          <div className={classes.header}>
+            <div className={classes.headerContent}>
+              <Typography variant='body2'>
                 Asistente Virtual
               </Typography>
-              <Typography variant='h6' sx={{ fontWeight: 'bold', fontSize: '16px' }}>
+              <Typography variant='h6'>
                 CLEIA - CONEIA
               </Typography>
             </div>
             <IconButton
               size='small'
               onClick={toggleChat}
-              sx={{ color: 'white', backgroundColor: 'rgba(255,255,255,0.2)' }}
+              className={classes.closeButton}
             >
               <CloseIcon fontSize='small' />
             </IconButton>
           </div>
-          <div style={{ padding: '24px', backgroundColor: '#f5f5f5' }}>
+          <div className={classes.chatContent}>
             {renderContent()}
           </div>
         </Paper>
@@ -257,26 +258,14 @@ const ChatWhats = () => {
         color='success'
         aria-label='whatsapp'
         onClick={toggleChat}
+        className={classes.fab}
         sx={{
-          backgroundColor: '#25D366',
-          color          : 'white',
-          width          : 60,
-          height         : 60,
-          boxShadow      : '0 4px 20px rgba(37, 211, 102, 0.4)',
-          animation      : !isOpen ? `${pulse} 2s infinite` : 'none',
-          '&:hover'      : {
-            backgroundColor: '#128C7E',
-            transform      : 'scale(1.1)',
-            transition     : 'all 0.3s ease',
-          },
-          '&:active': {
-            transform: 'scale(0.95)',
-          }
+          animation: !isOpen ? `${pulse} 2s infinite` : 'none'
         }}
       >
         <WhatsAppIcon sx={{ fontSize: 30 }} />
       </Fab>
-    </Box>
+    </Root>
   )
 }
 

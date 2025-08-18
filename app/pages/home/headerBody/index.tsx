@@ -1,34 +1,69 @@
 'use client'
-import WhatsAppIcon from '@mui/icons-material/WhatsApp'
-import { Button, Typography } from '@mui/material'
-import Image from 'next/image'
+import { useState } from 'react'
 
-import imageBody from '../../../assets/cleia-body.svg'
+import WhatsAppIcon from '@mui/icons-material/WhatsApp'
+import { Button, Menu, MenuItem } from '@mui/material'
 
 import Root, { classes } from './styles'
 
-const HeaderBody = () => (
-  <Root>
-    <div className={classes.hideOnMobile}></div>
-    <div className={classes.content}>
-      <div className={classes.logoContainer}>
-        <Image src={imageBody} alt='logo cleia' className={classes.imageBody} />
+const HeaderBody = () => {
+  const [ anchorEl, setAnchorEl ] = useState<null | HTMLElement>(null)
+
+  const handleOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null)
+  }
+
+  const handleWhatsAppClick = (phoneNumber: string) => {
+    const message =
+      '¡Hola! Quiero comprar una entrada para el Congreso Nacional de Ingeniería Agrícola.'
+    const encodedMessage = encodeURIComponent(message)
+
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank')
+    handleCloseMenu()
+  }
+
+  return (
+    <Root>
+      <div className={classes.content}>
+        <Button
+          className={classes.button}
+          variant='contained'
+          color='primary'
+          startIcon={<WhatsAppIcon />}
+          onClick={handleOpenMenu}
+        >
+          ¿Cómo adquiero mi entrada?
+        </Button>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          PaperProps={{
+            style: {
+              width: anchorEl ? anchorEl.offsetWidth : undefined
+            }
+          }}
+        >
+          <MenuItem
+            onClick={() => handleWhatsAppClick('51925038058')}
+            sx={{ justifyContent: 'center' }}
+          >
+            📱 925 038 058
+          </MenuItem>
+          <MenuItem
+            onClick={() => handleWhatsAppClick('51955230045')}
+            sx={{ justifyContent: 'center' }}
+          >
+            📱 955 230 045
+          </MenuItem>
+        </Menu>
       </div>
-      <Typography variant='h4' fontWeight='bold' color='white' className={classes.dateText}>
-        DEL 20 AL 24 DE OCTUBRE
-      </Typography>
-      <Button
-        className={classes.button}
-        variant='contained'
-        color='primary'
-        startIcon={<WhatsAppIcon />}
-      >
-        ¿Cómo adquiero mi entrada?
-      </Button>
-    </div>
-    <div className={classes.hideOnMobile}></div>
-    <div className={classes.hideOnMobile}></div>
-  </Root>
-)
+    </Root>
+  )
+}
 
 export default HeaderBody

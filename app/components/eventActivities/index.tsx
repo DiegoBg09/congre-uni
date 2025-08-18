@@ -16,7 +16,10 @@ import {
 } from '@mui/material'
 import Image from 'next/image'
 
+import feriaAgricola from '../../assets/feriaAgricola.svg'
+import networking from '../../assets/networking.svg'
 import olimpiadas from '../../assets/olimpiadas.svg'
+import ponencias from '../../assets/ponencia.svg'
 import visitasTecnicas from '../../assets/visitastecnicas.svg'
 
 import Root, { classes } from './styles'
@@ -26,7 +29,7 @@ const activities = [
     title      : 'PONENCIAS',
     description: 'Conferencias impartidas por expertos en ingeniería agrícola que exploran tendencias y desafíos actuales, proporcionando conocimientos valiosos.',
     icon       : <SpeakerNotesIcon />,
-    image      : visitasTecnicas,
+    image      : ponencias,
   },
   {
     title      : 'VISITAS TECNICAS',
@@ -38,13 +41,13 @@ const activities = [
     title      : 'FERIA AGRÍCOLA',
     description: 'Espacio donde empresas presentan oportunidades laborales, permitiendo a los participantes establecer conexiones profesionales con las empresas en un futuro.',
     icon       : <BusinessCenterIcon />,
-    image      : visitasTecnicas,
+    image      : feriaAgricola,
   },
   {
     title      : 'NETWORKING',
     description: 'Espacio diseñado para que los asistentes establezcan conexiones profesionales, compartan experiencias y generen oportunidades de colaboración en el ámbito de la ingeniería agrícola.',
     icon       : <GroupIcon />,
-    image      : visitasTecnicas,
+    image      : networking,
   },
   {
     title      : 'OLIMPIADAS',

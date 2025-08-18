@@ -19,10 +19,16 @@ export default styled(Grid, {
   gridTemplateRows   : '1fr 1fr',
   alignItems         : 'center',
   justifyContent     : 'center',
+  backgroundImage    : 'url("/info-body-home.svg")',
+  backgroundSize     : 'cover',
+  backgroundPosition : 'center',
+  backgroundRepeat   : 'no-repeat',
+  zIndex             : 9999,
 
   [breakpoints.down('md')]: {
     gridTemplateColumns: '1fr',
     gridTemplateRows   : 'auto',
+    backgroundImage    : 'url("/bodyMobile.svg")',
   },
 
   [`& .${classes.hideOnMobile}`]: {
@@ -37,6 +43,8 @@ export default styled(Grid, {
     alignItems    : 'center',
     justifyContent: 'center',
     textAlign     : 'center',
+    position      : 'relative',
+    zIndex        : 2,
 
     [breakpoints.down('md')]: {
       gridColumn: '1',
@@ -58,24 +66,24 @@ export default styled(Grid, {
   },
 
   [`& .${classes.button}`]: {
-    marginTop               : spacing(4.5),
+    marginTop               : spacing(11),
     marginLeft              : spacing(5),
     [breakpoints.down('md')]: {
-      marginTop : spacing(2),
-      marginLeft: spacing(2),
+      marginTop : spacing(28),
+      marginLeft: spacing(1.5),
     },
   },
 
   [`& .${classes.logoContainer}`]: {
+    position: 'absolute',
+    top     : 0,
+    left    : 0,
     width   : '100%',
-    height  : 'auto',
-    position: 'relative',
-    overflow: 'hidden',
+    height  : '100%',
+    zIndex  : 1,
   },
 
   [`& .${classes.imageBody}`]: {
-    width    : '100%',
-    height   : 'auto',
-    objectFit: 'contain',
+    objectFit: 'cover',
   },
 }))
