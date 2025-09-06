@@ -120,7 +120,7 @@ const ChatWhats = () => {
                 <strong>📋 Información del Congreso</strong>
               </Typography>
               <Typography variant='body2' sx={{ color: '#555', lineHeight: 1.5 }}>
-                🗓️ <strong>Fecha:</strong> Del 20 al 24 de Agosto
+                🗓️ <strong>Fecha:</strong> Del 20 al 24 de Octubre
                 <br />
                 📍 <strong>Lugar:</strong> Piura, Perú
                 <br />

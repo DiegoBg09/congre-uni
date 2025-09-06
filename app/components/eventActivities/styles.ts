@@ -13,6 +13,7 @@ export const classes = {
 }
 
 export default styled(Container)(({ theme: { spacing, palette, breakpoints } }) => ({
+  marginBottom                 : spacing(4),
   [`& .${classes.scrollTrack}`]: {
     display                : 'flex',
     overflowX              : 'auto',

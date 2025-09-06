@@ -1,89 +1,58 @@
 'use client'
-import { Box, Typography, Card, Grid, CardContent, Avatar, Chip } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { Box, Typography, Card, Grid } from '@mui/material'
+import Image from 'next/image'
+
+import gerardo from '../../assets/Gerardo-Santana.svg'
+import luis from '../../assets/Luis-Valdiviezo.svg'
+import nestor from '../../assets/Nestor-Montalvo.svg'
+import peru from '../../assets/peru.svg'
 
 interface Speaker {
-  id         : number;
-  name       : string;
-  title      : string;
-  country    : string;
-  countryFlag: string;
-  image      : string;
-  companies  : string[];
+  id     : number;
+  name   : string;
+  image  : string;
+  country: string;
 }
 
 const speakersData: Speaker[] = [
   {
-    id         : 1,
-    name       : 'Giancarlo Torres',
-    title      : 'Supply Chain Planning Manager',
-    country    : 'Perú',
-    countryFlag: '🇵🇪',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'Komatsu', 'Mitsui' ]
+    id     : 1,
+    name   : 'Dr. Gerardo Santana',
+    image  : gerardo,
+    country: peru
   },
   {
-    id         : 2,
-    name       : 'Arturo Montalvan',
-    title      : 'Gerente General de Lácteos Toni',
-    country    : 'Perú',
-    countryFlag: '🇵🇪',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'LAY' ]
+    id     : 2,
+    name   : 'Dr. Nestor Montalvo',
+    image  : nestor,
+    country: peru
   },
   {
-    id         : 3,
-    name       : 'Frank Cano',
-    title      : 'FMBA - MSC - PMC - CSP Industrial Engineer',
-    country    : 'Perú',
-    countryFlag: '🇵🇪',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'Mondelez', 'Kraft' ]
-  },
-  {
-    id         : 4,
-    name       : 'André Chávez',
-    title      : 'Consultor Senior en Inteligencia Artificial',
-    country    : 'Perú',
-    countryFlag: '🇵🇪',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'Baccus' ]
-  },
-  {
-    id         : 5,
-    name       : 'Santiago Moscoso',
-    title      : 'Decano en la Universidad Católica de Cuenca',
-    country    : 'Ecuador',
-    countryFlag: '🇪🇨',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'UC', 'R&D' ]
-  },
-  {
-    id         : 6,
-    name       : 'Pablo Vega',
-    title      : 'Gerente General de CIVE',
-    country    : 'Chile',
-    countryFlag: '🇨🇱',
-    image      : '/api/placeholder/300/300',
-    companies  : [ 'CIVE' ]
+    id     : 3,
+    name   : 'Ing. Luis Valdiviezo',
+    image  : luis,
+    country: peru
   }
 ]
 
 const Speakers = () => {
-  const theme = useTheme()
-
   return (
-    <Box>
+    <Box
+      sx={{
+        background: 'linear-gradient(135deg, #5B2C06 0%, #2A1602 100%)',
+        py        : 8
+      }}
+    >
       <Box maxWidth='1200px' mx='auto'>
         <Typography
           variant='h2'
           component='h1'
           align='center'
           sx={{
-            color     : 'white',
-            fontWeight: 700,
+            color     : '#A6CE39',
+            fontWeight: 800,
             mb        : 6,
-            textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+            textShadow: '2px 2px 8px rgba(0,0,0,0.6)'
           }}
         >
           PONENTES OFICIALES
@@ -91,100 +60,45 @@ const Speakers = () => {
 
         <Grid container spacing={4} justifyContent='center'>
           {speakersData.map((speaker) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={speaker.id}>
+            <Grid size={{ xs: 12, sm: 6, md: 3.5 }} key={speaker.id}>
               <Card
                 sx={{
-                  height        : '100%',
-                  background    : 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)',
-                  backdropFilter: 'blur(10px)',
-                  borderRadius  : 3,
-                  border        : '1px solid rgba(255,255,255,0.2)',
-                  boxShadow     : '0 8px 32px rgba(0,0,0,0.1)',
-                  transition    : 'all 0.3s ease',
-                  '&:hover'     : {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 16px 48px rgba(0,0,0,0.2)'
-                  }
+                  height      : '100%',
+                  borderRadius: 3,
+                  boxShadow   : '0 8px 24px rgba(0,0,0,0.25)',
+                  overflow    : 'hidden'
                 }}
               >
-                <CardContent sx={{ p: 3, textAlign: 'center' }}>
-                  <Avatar
+                <Box
+                  sx={{
+                    width         : '100%',
+                    height        : 240,
+                    position      : 'relative',
+                    background    : 'linear-gradient(180deg, #1565C0 0%, #062447 100%)', // degradado verde claro
+                    display       : 'flex',
+                    alignItems    : 'flex-end',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <Image
                     src={speaker.image}
                     alt={speaker.name}
-                    sx={{
-                      width    : 120,
-                      height   : 120,
-                      mx       : 'auto',
-                      mb       : 2,
-                      border   : `3px solid ${theme.palette.secondary.main}`,
-                      boxShadow: '0 4px 16px rgba(0,0,0,0.1)'
+                    width={220}
+                    height={220}
+                    style={{
+                      objectFit: 'contain'
                     }}
                   />
-
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 3, background: '#fff' }}>
                   <Typography
-                    variant='h5'
-                    component='h3'
-                    sx={{
-                      color     : theme.palette.primary.main,
-                      fontWeight: 700,
-                      mb        : 1
-                    }}
+                    variant='h6'
+                    sx={{ fontWeight: 700, color: '#2A1602' }}
                   >
                     {speaker.name}
                   </Typography>
-
-                  <Chip
-                    label={speaker.country}
-                    size='small'
-                    sx={{
-                      backgroundColor: theme.palette.warning.main,
-                      color          : 'white',
-                      fontWeight     : 600,
-                      mb             : 2
-                    }}
-                  />
-
-                  <Typography
-                    variant='subtitle1'
-                    sx={{
-                      color         : theme.palette.text.primary,
-                      mb            : 3,
-                      minHeight     : '3em',
-                      display       : 'flex',
-                      alignItems    : 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    {speaker.title}
-                  </Typography>
-
-                  <Box
-                    sx={{
-                      display       : 'flex',
-                      flexWrap      : 'wrap',
-                      gap           : 1,
-                      justifyContent: 'center',
-                      mt            : 'auto'
-                    }}
-                  >
-                    {speaker.companies.map((company, index) => (
-                      <Box
-                        key={index}
-                        sx={{
-                          backgroundColor: theme.palette.primary.main,
-                          color          : 'white',
-                          px             : 2,
-                          py             : 0.5,
-                          borderRadius   : 2,
-                          fontSize       : '0.75rem',
-                          fontWeight     : 600
-                        }}
-                      >
-                        {company}
-                      </Box>
-                    ))}
-                  </Box>
-                </CardContent>
+                  <Image src={speaker.country} alt={speaker.name} width={50} height={50} />
+                </Box>
               </Card>
             </Grid>
           ))}

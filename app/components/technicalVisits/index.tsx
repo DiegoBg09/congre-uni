@@ -63,7 +63,8 @@ const TechnicalVisits = () => {
     <Root>
       <div className={classes.titleContainer}>
         <Typography variant='h3' fontWeight='bold'>Visitas Técnicas</Typography>
-        <Button
+        {/*
+            <Button
           component={Link}
           href={isShowAll ? '/' : '/visitas-tecnicas'}
           startIcon={isShowAll ? <ArrowBack /> : <SlowMotionVideo />}
@@ -74,6 +75,7 @@ const TechnicalVisits = () => {
         >
           {isShowAll ? 'Regresar al inicio' : 'Visitas técnicas'}
         </Button>
+        */}
       </div>
 
       <Typography variant='body1' my={3}>

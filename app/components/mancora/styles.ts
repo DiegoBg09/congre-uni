@@ -1,6 +1,5 @@
 import { styled } from '@mui/material'
 
-import mancoraImage from '../../assets/mancora.svg'
 const PREFIX = 'Mancora'
 
 export const classes = {
@@ -17,11 +16,8 @@ export default styled('div', {
   display                 : 'flex',
   flexDirection           : 'column',
   paddingTop              : spacing(8),
-  paddingBottom           : spacing(35),
-  backgroundImage         : `url(${mancoraImage.src})`,
-  backgroundRepeat        : 'no-repeat',
-  backgroundPosition      : 'center',
-  backgroundSize          : 'cover',
+  paddingBottom           : spacing(8),
+  background              : 'linear-gradient(180deg, #1565C0 0%, #062447 100%)',
   [breakpoints.down('md')]: {
     paddingTop   : spacing(5),
     paddingBottom: spacing(20),
