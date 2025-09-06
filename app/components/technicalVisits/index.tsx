@@ -3,10 +3,10 @@
 import { useMemo, useRef } from 'react'
 
 import {
-  ArrowBack, ArrowForward, SlowMotionVideo
+  ArrowBack, ArrowForward
 } from '@mui/icons-material'
 import {
-  Card, CardContent, Typography, Button, Link, Grid, useMediaQuery,
+  Card, CardContent, Typography, Grid, useMediaQuery,
   useTheme, IconButton, Box
 } from '@mui/material'
 import Image from 'next/image'
