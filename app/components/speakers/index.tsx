@@ -1,11 +1,32 @@
 'use client'
-import { Box, Typography, Card, Grid } from '@mui/material'
+
+import { useState, useRef, useEffect } from 'react'
+
+import { Box, Typography, Card, Container } from '@mui/material'
 import Image from 'next/image'
 
+import bueno from '../../assets/bueno.svg'
+import calvo from '../../assets/calvo.svg'
+import costaRica from '../../assets/costa-rica.svg'
 import gerardo from '../../assets/Gerardo-Santana.svg'
 import luis from '../../assets/Luis-Valdiviezo.svg'
+import mexico from '../../assets/mexico.svg'
 import nestor from '../../assets/Nestor-Montalvo.svg'
+import parrado from '../../assets/parrado.svg'
 import peru from '../../assets/peru.svg'
+import zegarra from '../../assets/zegarra.svg'
+
+import {
+  containerStyles,
+  innerContainerStyles,
+  titleStyles,
+  scrollContainerStyles,
+  speakerCardStyles,
+  imageContainerStyles,
+  nameContainerStyles,
+  nameStyles,
+  autoScrollKeyframes
+} from './styles'
 
 interface Speaker {
   id     : number;
@@ -32,54 +53,116 @@ const speakersData: Speaker[] = [
     name   : 'Ing. Luis Valdiviezo',
     image  : luis,
     country: peru
+  },
+  {
+    id     : 4,
+    name   : 'Nancy Calvo',
+    image  : calvo,
+    country: costaRica
+  },
+  {
+    id     : 5,
+    name   : 'Ing. Edgardo Guerra',
+    image  : bueno,
+    country: peru
+  },
+  {
+    id     : 6,
+    name   : 'Ing. Lina Parrado',
+    image  : parrado,
+    country: mexico
+  },
+  {
+    id     : 7,
+    name   : 'Ing. David Zegarra',
+    image  : zegarra,
+    country: peru
   }
 ]
 
 const Speakers = () => {
-  return (
-    <Box
-      sx={{
-        background: 'linear-gradient(135deg, #5B2C06 0%, #2A1602 100%)',
-        py        : 8
-      }}
-    >
-      <Box maxWidth='1200px' mx='auto'>
-        <Typography
-          variant='h2'
-          component='h1'
-          align='center'
-          sx={{
-            color     : '#A6CE39',
-            fontWeight: 800,
-            mb        : 6,
-            textShadow: '2px 2px 8px rgba(0,0,0,0.6)'
-          }}
-        >
-          PONENTES OFICIALES
-        </Typography>
+  const [ isDragging, setIsDragging ] = useState(false)
+  const [ startX, setStartX ] = useState(0)
+  const [ scrollLeft, setScrollLeft ] = useState(0)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
-        <Grid container spacing={4} justifyContent='center'>
-          {speakersData.map((speaker) => (
-            <Grid size={{ xs: 12, sm: 6, md: 3.5 }} key={speaker.id}>
+  // Usar los datos originales sin duplicar
+  const speakers = speakersData
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if(!scrollContainerRef.current) return
+    setIsDragging(true)
+    setStartX(e.pageX - scrollContainerRef.current.offsetLeft)
+    setScrollLeft(scrollContainerRef.current.scrollLeft)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if(!isDragging || !scrollContainerRef.current) return
+    e.preventDefault()
+    const x = e.pageX - scrollContainerRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+
+  const handleMouseLeave = () => {
+    setIsDragging(false)
+  }
+
+  // Scroll automático
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if(!scrollContainerRef.current || isDragging) return
+
+      const container = scrollContainerRef.current
+      const maxScroll = container.scrollWidth - container.clientWidth
+      const currentScroll = container.scrollLeft
+
+      if(currentScroll >= maxScroll) {
+        container.scrollLeft = 0
+      } else {
+        container.scrollLeft += 1
+      }
+    }, 30)
+
+    return () => clearInterval(interval)
+  }, [ isDragging ])
+
+  return (
+    <>
+      <style>{autoScrollKeyframes}</style>
+      <Box sx={containerStyles}>
+        <Container sx={innerContainerStyles}>
+          <Typography
+            variant='h2'
+            component='h1'
+            align='center'
+            sx={titleStyles}
+          >
+            PONENTES OFICIALES
+          </Typography>
+
+          <Box
+            ref={scrollContainerRef}
+            sx={{
+              ...scrollContainerStyles,
+              ...(isDragging ? { cursor: 'grabbing' } : {}),
+              padding: 2
+            }}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
+            {speakers.map((speaker) => (
               <Card
-                sx={{
-                  height      : '100%',
-                  borderRadius: 3,
-                  boxShadow   : '0 8px 24px rgba(0,0,0,0.25)',
-                  overflow    : 'hidden'
-                }}
+                key={speaker.id}
+                sx={speakerCardStyles}
               >
-                <Box
-                  sx={{
-                    width         : '100%',
-                    height        : 240,
-                    position      : 'relative',
-                    background    : 'linear-gradient(180deg, #1565C0 0%, #062447 100%)', // degradado verde claro
-                    display       : 'flex',
-                    alignItems    : 'flex-end',
-                    justifyContent: 'center'
-                  }}
-                >
+                <Box sx={imageContainerStyles}>
                   <Image
                     src={speaker.image}
                     alt={speaker.name}
@@ -90,21 +173,21 @@ const Speakers = () => {
                     }}
                   />
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', p: 3, background: '#fff' }}>
+                <Box sx={nameContainerStyles}>
                   <Typography
                     variant='h6'
-                    sx={{ fontWeight: 700, color: '#2A1602' }}
+                    sx={nameStyles}
                   >
                     {speaker.name}
                   </Typography>
                   <Image src={speaker.country} alt={speaker.name} width={50} height={50} />
                 </Box>
               </Card>
-            </Grid>
-          ))}
-        </Grid>
+            ))}
+          </Box>
+        </Container>
       </Box>
-    </Box>
+    </>
   )
 }
 

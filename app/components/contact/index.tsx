@@ -62,13 +62,13 @@ const Contact = () => {
               Estas son nuestras redes sociales <strong>¡tienes diferentes formas de contactarnos!</strong>
             </Typography>
             <Stack direction='row' spacing={0.5} className={classes.buttonContactContainer}>
-              <IconButton href='https://www.facebook.com/' target='_blank'>
+              <IconButton href='https://www.facebook.com/profile.php?id=61558866883565' target='_blank'>
                 <FacebookIcon fontSize='large' color='primary' />
               </IconButton>
-              <IconButton href='https://www.instagram.com/' target='_blank'>
+              <IconButton href='https://www.instagram.com/coneiaxiv/' target='_blank'>
                 <InstagramIcon fontSize='large' color='primary' />
               </IconButton>
-              <IconButton>
+              <IconButton href='https://api.whatsapp.com/send/?phone=51925038058' target='_blank'>
                 <WhatsAppIcon fontSize='large' color='primary' />
               </IconButton>
             </Stack>

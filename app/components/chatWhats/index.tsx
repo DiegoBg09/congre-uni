@@ -74,7 +74,7 @@ const ChatWhats = () => {
   }
 
   const handleContactClick = (step: 'info' | 'tickets') => {
-    setPreviousStep(step) // 👈 guardamos desde dónde viene
+    setPreviousStep(step)
     setCurrentStep('phone')
   }
 
